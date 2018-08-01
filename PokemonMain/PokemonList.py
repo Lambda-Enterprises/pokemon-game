@@ -1,4 +1,4 @@
-class pokemondata: #holds all the stats for each pokemon
+class PokemonData: #holds all the stats for each pokemon
     keylist = [] #lists hold the stats where key holds the digits and name holds the names
     namelist = []
     
