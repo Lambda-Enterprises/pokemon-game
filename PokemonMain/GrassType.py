@@ -1,7 +1,8 @@
 from Move import *
 
 class GrassType("Move"):
-    
+    def __init__(self, name, type, power, accuracy):
+           super(name, type, power, accuracy)
     
     def vinewhip (self):
         typemove = "grass"

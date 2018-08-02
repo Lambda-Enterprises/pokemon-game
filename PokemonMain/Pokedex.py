@@ -15,7 +15,7 @@ class Pokedex:
     
     def bidoof (self): #bidoof stats
         self.stats = [50, 198, 85, 76, 67, 79, 80]
-        self.names = ["Bidoof", "normal", "none", "tackle", "tailwhip", "icebeam", "cut"]
+        self.names = ["Bidoof", "normal", "none", "tackle", "tailwhip", "water gun", "cut"]
         return (self.stats, self.names)
     
     def bulbasaur (self): #bulbasaur stats

@@ -1,7 +1,8 @@
 class Move:
-    def __init__(self, attacker, defender, type, weather):
-        self.attacker = attacker
-        self.defender = defender
-        self.weather = weather
+    def __init__(self, name, type, power, accuracy):
+        self.name = name
+        self.type = type
+        self.power = power
+        self.accuracy = accuracy
     
     

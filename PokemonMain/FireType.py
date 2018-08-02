@@ -1,8 +1,8 @@
 from Move import *, 
 
 class FireType("Move"):
-    def __init__(self, attacker, defender, weather):
-        super(attacker, defender, weather)
+    def __init__(self, name, type, power, accuracy):
+        super(name, type, power, accuracy)
     
     #special attacks
     def ember (self): #in previous methods, they were all physical attacks

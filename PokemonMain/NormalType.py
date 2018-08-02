@@ -1,7 +1,8 @@
 from Move import *
 
 class NormalType("Move"):
-    
+    def __init__(self, name, type, power, accuracy):
+        super(name, type, power, accuracy)
     
     # physical attacks
     def tackle(self): #all variables need to have self beside it to retain the data
