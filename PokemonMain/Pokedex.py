@@ -1,8 +1,4 @@
-from importlib import import_module
-importlib.import_module('..FireType', 'Types')
-importlib.import_module('..WaterType', 'Types')
-importlib.import_module('..GrassType', 'Types')
-importlib.import_module('..NormalType', 'Types')
+from Type import *
 
 class Pokedex:
     def __init__(self):
