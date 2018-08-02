@@ -1,7 +1,5 @@
 from time import sleep
-from PhysicalMoves import *
 from Pokemon import *
-from StatusMoves import *
 
 c1 = 0 #counters for animation
 c2 = 0
