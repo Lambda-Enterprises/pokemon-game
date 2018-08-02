@@ -137,4 +137,5 @@ class PhysicalMove: #class calculates damage value from attacks
     
     def dig (self):
         typemove = "ground"
+        power = 45
         

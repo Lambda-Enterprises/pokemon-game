@@ -37,10 +37,6 @@ class PokemonData: #holds all the stats for each pokemon
         return (self.keylist)
     
     def __getitem1__ (self, key):
-<<<<<<< HEAD
-        self.namelist.extend(self.names)
-=======
         self.namelist.extend(self.names)
         return (self.namelist)
         #for some reason all the variables appear in the same list but it still works so it's fine
->>>>>>> eae8e93c518592c063e03496cd50d53dacabafb7
