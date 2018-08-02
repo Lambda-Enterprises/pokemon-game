@@ -158,10 +158,10 @@ def draw():
         #below are damage and stat values given based on the values in the lists
         plyratk = PhysicalMove(50, plyrlist[1], cpulist[8], plyrname[1], cpuname[8], cpuacc, weather, 0)
         plyrspatk = PhysicalMove(50, plyrlist[3], cpulist[10], plyrname[1], cpuname[8], cpuacc, weather, 0)
-        plyrsta = StatusMoves(cpulist[6], cpulist[7], cpulist[8], cpustate, cpuacc, plyrlist[2])
+        plyrsta = StatusMove(cpulist[6], cpulist[7], cpulist[8], cpustate, cpuacc, plyrlist[2])
         cpuatk = PhysicalMove(50, cpulist[7], plyrlist[2], cpuname[8], plyrname[1], plyracc, weather, 0)
         cpuspatk = PhysicalMove(50, cpulist[9], plyrlist[4], cpuname[8], plyrname[1], plyracc, weather, 0)
-        cpusta = StatusMoves(plyrlist[0], plyrlist[1], plyrlist[2], plyrstate, plyracc, cpulist[8]) 
+        cpusta = StatusMove(plyrlist[0], plyrlist[1], plyrlist[2], plyrstate, plyracc, cpulist[8]) 
         #more animation
         if plyrname[0] == "bulbasaur":
             c = (c2 % 2) * 80
