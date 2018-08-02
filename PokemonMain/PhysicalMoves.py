@@ -1,7 +1,5 @@
-from Pokemon import *
-
 class PhysicalMove: #class calculates damage value from attacks
-    def __init__(self, lvl, pokemon, weather, dmg): #initializes variables that are given in the class
+    def __init__(self, lvl, atk, defn, typepkmn, typeopp, accuracy, sky, dmg): #initializes variables that are given in the class
         self.lvl = lvl #user level
         self.atk = atk #user attack/special attack
         self.defn = defn #opponent defense/special defense
@@ -140,4 +138,7 @@ class PhysicalMove: #class calculates damage value from attacks
     def dig (self):
         typemove = "ground"
         power = 45
+        crit = 1
+        stab = 1
+        withr = 1
         
