@@ -1,7 +1,8 @@
-from PokemonMoves.FireType import *
-from PokemonMoves.GrassType import *
-from PokemonMoves.WaterType import *
-from PokemonMoves.NormalType import *
+from importlib import import_module
+importlib.import_module('..FireType', 'Types')
+importlib.import_module('..WaterType', 'Types')
+importlib.import_module('..GrassType', 'Types')
+importlib.import_module('..NormalType', 'Types')
 
 class Pokedex:
     def __init__(self):
