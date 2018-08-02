@@ -1,6 +1,6 @@
 from time import sleep
 from PhysicalMoves import *
-from PokemonList import *
+from Pokemon import *
 from StatusMoves import *
 
 c1 = 0 #counters for animation
@@ -8,18 +8,19 @@ c2 = 0
 c3 = 0
 
 def setup():
-    global plyrlist, plyrname, plyrbox, plyracc, plyratk, plyrspatk, plyrsta, plyrstate, plyracc, cpuacc, accuplyr, accucpu, psn
-    global cpulist, cpuname, cpubox, cpuacc, cpuatk, cpuspatk, cpusta, cpustate
-    global x, y, p, c, m, l, mode, r, textbox, x1, y1, win, lose
+    global plyrStats, plyrNames, plyrbox, plyracc, plyratk, plyrspatk, plyrsta, plyrstate, plyracc, cpuacc, accuplyr, accucpu, psn
+    global cpuStats, cpuNames, cpubox, cpuacc, cpuatk, cpuspatk, cpusta, cpustate
+    global playerPokemon, comPokemon
+    global x, y, mode, r, textbox, x1, y1, win, lose
     global bulb, charm, squir, stage, select, weather
     global bulbf, bulbb, charf, charb, squirf, squirb
     size(800, 700)
-    plyrlist = [] #these are the actual lists that will hold the stats for the player and cpu
-    plyrname = []
+    plyrStats = [] #these are the actual lists that will hold the stats for the player and cpu
+    plyrNames = []
     plyraccu = 0
     
-    cpulist = []
-    cpuname = []
+    cpuStats = []
+    cpuNames = []
     cpuaccu = 0
     
     bulb = loadImage("bulbasaur.png")
@@ -38,11 +39,10 @@ def setup():
     psn = loadImage("poison.png")
     win = loadImage("win.png")
     lose = loadImage("fail.png")
-    p = PokemonData() #calls upon PokemonData to receive the class stats for the lists
-    c = PokemonData()
-    l = p
-    m = c
-    #below are starting variables that are changed later on
+    playerPokemon = Pokemon() #calls upon PokemonData to receive the class stats for the lists
+    comPokemon = Pokemon()
+    
+    #below are starting variables that may change later on
     plyracc = 0
     accuplyr = 0
     plyrstate = "normal"
@@ -66,24 +66,44 @@ def setup():
     stage = loadImage("18502.png")
     mode = 1
     
+    #cpu pokemon
+    r = int(random(2)) #cpu's pokemon is always random each battle
+    if r == 0:
+        playerPokemon.__setPokemon__('bulbasaur')
+        print (comPokemon.__getStats__(), comPokemon.__getNames__())
+        mode = 3 #battlemode
+        print ("press i to select move")
+    elif r == 1:
+        playerPokemon.__setPokemon__('charmander')
+        print (comPokemon.__getStats__(), comPokemon.__getNames__())
+        mode = 3
+        print ("press i to select move")
+    elif r == 2:
+        playerPokemon.__setPokemon__('squirtle')
+        print (comPokemon.__getStats__(), comPokemon.__getNames__())
+        mode = 3
+        print ("press i to select move")
+    cpuStats, cpuNames = comPokemon.__getStats__(), comPokemon.__getNames__()
+
 def draw():
-    global x, y, p, c, l, mode, c1, c2, c3, m, r, x1, y1
-    global plyrlist, plyrname, plyrbox, fight, plyratk, plyrspatk, cpuatk, cpuspatk, plyrsta, cpusta, plyrstate, cpustate, plyracc, cpuacc, accuplyr, accucpu, psn
-    global cpulist, cpuname, cpubox, textbox, win, lose
+    global x, y, mode, c1, c2, c3, r, x1, y1
+    global playerPokemon, comPokemon
+    global plyrStats, plyrNames, plyrbox, fight, plyratk, plyrspatk, cpuatk, cpuspatk, plyrsta, cpusta, plyrstate, cpustate, plyracc, cpuacc, accuplyr, accucpu, psn
+    global cpuStats, cpuNames, cpubox, textbox, win, lose
     global bulb, charm, squir, stage, select
-    background(0, 125, 157) 
-    rect (x, y, 100, 100)
-    fill (0, 200, 0)
-    rect (200, 400, 80, 80)
-    fill (200, 0, 0)
+    background(0, 125, 157)
+    rect(x, y, 100, 100)
+    fill(0, 200, 0)
+    rect(200, 400, 80, 80)
+    fill(200, 0, 0)
     rect(400, 400, 80, 80)
-    fill (0, 0, 200)
+    fill(0, 0, 200)
     rect(600, 400, 80, 80)
-    fill (255)
-    #animation    
+    fill(255)
+    #animation
     a = (c1 % 16) * 60
     b = (c1 / 16) * 70
-    copy (bulb, a, b, 60, 70, 100, 100, 180, 213)
+    copy(bulb, a, b, 60, 70, 100, 100, 180, 213)
     c1 = c1 + 1 #runs through a sprite sheet to create the animation
     delay(50)
     if c1 == 15:
@@ -91,7 +111,7 @@ def draw():
     
     a = (c1 % 16) * 60
     b = (c1 / 16) * 70
-    copy (charm, a, b, 60, 70, 300, 100, 180, 213)
+    copy(charm, a, b, 60, 70, 300, 100, 180, 213)
     c1 = c1 + 1
     delay(50)
     if c1 == 15:
@@ -99,78 +119,40 @@ def draw():
     
     a = (c1 % 16) * 60
     b = (c1 / 16) * 70
-    copy (squir, a, b, 60, 70, 500, 100, 180, 213)
+    copy(squir, a, b, 60, 70, 500, 100, 180, 213)
     c1 = c1 + 1
     delay(50)
     if c1 == 15:
         c1 = 0
     
-    #your pokemon
+    #Pokemon Selection
     if mode == 1:
         text("LEFT and RIGHT to move, u to select", 0, 32)
         textSize(32)
         fill (255)
-        if keyPressed:
-            if key == 'u': #depending on the position of the cursor, different pokemon are selected
-                if x == 200:
-                    plyrlist.extend(l.__getStats__(p.bulbasaur())) #calls upon the class and obtains the proper variables
-                    plyrname.extend(l.__getNames__(p.bulbasaur()))
-                    print plyrlist, plyrname 
-                    mode = 2 #cpu choice
-                elif x == 400:
-                    plyrlist.extend(l.__getStats__(p.charmander()))
-                    plyrname.extend(l.__getNames__(p.charmander()))
-                    print plyrlist, plyrname
-                    mode = 2 
-                elif x == 600:
-                    plyrlist.extend(l.__getStats__(p.squirtle()))
-                    plyrname.extend(l.__getNames__(p.squirtle()))
-                    print plyrlist, plyrname
-                    mode = 2
-    #cpu pokemon
-    if mode == 2:
-        r = int(random(2)) #cpu's pokemon is always random each battle
-        if r == 0:
-            cpulist.extend(m.__getStats__(c.bulbasaur()))
-            cpuname.extend(m.__getNames__(c.bulbasaur()))
-            print cpulist, cpuname
-            mode = 3 #battlemode
-            print ("press i to select move")
-        elif r == 1:
-            cpulist.extend(m.__getStats__(c.charmander()))
-            cpuname.extend(m.__getNames__(c.charmander()))
-            print cpulist, cpuname
-            mode = 3
-            print ("press i to select move")
-        elif r == 2:
-            cpulist.extend(m.__getStats__(c.squirtle()))
-            cpuname.extend(m.__getNames__(c.squirtle()))
-            print cpulist, cpuname
-            mode = 3
-            print ("press i to select move")
-    #battlemode
-    if mode == 3:
+    #Battle Mode
+    elif mode == 3:
         image (stage, 0, 0, 800, 600)
         image (plyrbox, 465, 475, 335, 125)
         image (cpubox, 0, 200, 260, 100)
         image (textbox, 0, 600, 800, 100)
         image (select, x1, y1, 15, 15)
         #below are damage and stat values given based on the values in the lists
-        plyratk = PhysicalMove(50, plyrlist[1], cpulist[8], plyrname[1], cpuname[8], cpuacc, weather, 0)
-        plyrspatk = PhysicalMove(50, plyrlist[3], cpulist[10], plyrname[1], cpuname[8], cpuacc, weather, 0)
-        plyrsta = StatusMove(cpulist[6], cpulist[7], cpulist[8], cpustate, cpuacc, plyrlist[2])
-        cpuatk = PhysicalMove(50, cpulist[7], plyrlist[2], cpuname[8], plyrname[1], plyracc, weather, 0)
-        cpuspatk = PhysicalMove(50, cpulist[9], plyrlist[4], cpuname[8], plyrname[1], plyracc, weather, 0)
-        cpusta = StatusMove(plyrlist[0], plyrlist[1], plyrlist[2], plyrstate, plyracc, cpulist[8]) 
+        plyratk = PhysicalMove(50, plyrStats[1], cpuStats[8], plyrNames[1], cpuNames[8], cpuacc, weather, 0)
+        plyrspatk = PhysicalMove(50, plyrStats[3], cpuStats[10], plyrNames[1], cpuNames[8], cpuacc, weather, 0)
+        plyrsta = StatusMove(cpuStats[6], cpuStats[7], cpuStats[8], cpustate, cpuacc, plyrStats[2])
+        cpuatk = PhysicalMove(50, cpuStats[7], plyrStats[2], cpuNames[8], plyrNames[1], plyracc, weather, 0)
+        cpuspatk = PhysicalMove(50, cpuStats[9], plyrStats[4], cpuNames[8], plyrNames[1], plyracc, weather, 0)
+        cpusta = StatusMove(plyrStats[0], plyrStats[1], plyrStats[2], plyrstate, plyracc, cpuStats[8]) 
         #more animation
-        if plyrname[0] == "bulbasaur":
+        if plyrNames[0] == "bulbasaur":
             c = (c2 % 2) * 80
             d = (c2 / 2) * 61
             copy (bulbb, c, d, 80, 61, 100, 440, 160, 160)
             c2 = c2 + 1
             if c2 == 2:
                 c2 = 0
-        elif plyrname[0] == "charmander":
+        elif plyrNames[0] == "charmander":
             c = (c2 % 2) * 80
             d = (c2 / 2) * 61
             copy (charb, c, d, 80, 61, 100, 440, 160, 160)
@@ -185,21 +167,21 @@ def draw():
             if c2 == 2:
                 c2 = 0
         
-        if cpuname[7] == "bulbasaur":
+        if cpuNames[7] == "bulbasaur":
             e = (c3 % 2) * 80
             f = (c3 / 2) * 80
             copy (bulbf, e, f, 80, 80, 470, 210, 240, 240)
             c3 = c3 + 1
             if c3 == 2:
                 c3 = 0
-        elif cpuname[7] == "charmander":
+        elif cpuNames[7] == "charmander":
             e = (c3 % 2) * 80
             f = (c3 / 2) * 80
             copy (charf, e, f, 80, 80, 470, 210, 240, 240)
             c3 = c3 + 1
             if c3 == 2:
                 c3 = 0
-        elif cpuname[7] == "squirtle":
+        elif cpuNames[7] == "squirtle":
             e = (c3 % 2) * 80
             f = (c3 / 2) * 80
             copy (squirf, e, f, 80, 80, 470, 210, 240, 240)
@@ -208,169 +190,179 @@ def draw():
                 c3 = 0
         #sets the text to suit the pokemon selected
         fill (0)
-        text (plyrname[0], 520, 525)
+        text (plyrNames[0], 520, 525)
         text ("50", 740, 525)
         textSize (25)
-        text (cpuname[7], 10, 250)
+        text (cpuNames[7], 10, 250)
         text ("50", 180, 250)
         textSize (28)
-        text (plyrname[3], 50, 640)
-        text (plyrname[4], 195, 640)
-        text (plyrname[5], 360, 640)
-        text (plyrname[6], 495, 640)
+        text (plyrNames[3], 50, 640)
+        text (plyrNames[4], 195, 640)
+        text (plyrNames[5], 360, 640)
+        text (plyrNames[6], 495, 640)
         textSize (30)
         fill(255)
         
         fill (20, 100, 50)
-        rect(650, 540, plyrlist[0], 10)
-        rect(100, 265, cpulist[6], 10)
-        
-        if keyPressed:
-            if key == "i": #select move with i
-                accuplyr = int(random(0, plyracc)) #checks to see if you hit the target
-                if accuplyr == 0: #the higher plyracc, the more likely to miss
-                    if x1 == 25: #cursor position and pokemon affect which move is used
-                        print(plyrname[0], "used", plyrname[3])
-                        if plyrname[0] == "bulbasaur" or plyrname[0] == "squirtle":
-                            cpulist[6] = cpulist[6] - plyratk.tackle()
-                        if plyrname[0] == "charmander":
-                            cpulist[7] = plyrsta.growl()
-                        
-                    if x1 == 175:
-                        print(plyrname[0], "used", plyrname[4])
-                        if plyrname[0] == "bulbasaur":
-                            cpulist[6] = cpulist[6] - plyratk.vinewhip()
-                            if cpuname[8] == "fire" or cpuname[8] == "grass":
-                                print ("it's not very effective")
-                            if cpuname[8] == "water":
-                                print("it's super effective")
-                        if plyrname[0] == "charmander":
-                            cpulist[6] = cpulist[6] - plyratk.scratch()
-                        if plyrname[0] == "squirtle":
-                            cpulist[8] = plyrsta.tailwhip()
-                        
-                    if x1 == 325:
-                        print(plyrname[0], "used", plyrname[5])
-                        if plyrname[0] == "bulbasaur":
-                            cpulist[7] = plyrsta.growl()
-                        if plyrname[0] == "charmander":
-                            cpulist[6] = cpulist[6] - plyrspatk.ember()
-                            if cpuname[8] == "fire" or cpuname[8] == "water":
-                                print ("it's not very effective")
-                            if cpuname[8] == "grass":
-                                print("it's super effective")
-                        if plyrname[0] == "squirtle":
-                            cpulist[6] = cpulist[6] - plyrspatk.bubble()
-                            if cpuname[8] == "grass" or cpuname[8] == "water":
-                                print ("it's not very effective")
-                            if cpuname[8] == "fire":
-                                print("it's super effective")
-                        
-                    if x1 == 475:
-                        print(plyrname[0], "used", plyrname[6])  
-                        
-                        if plyrname[0] == "bulbasaur":
-                            cpustate = plyrsta.poisonpowder()
-                        if plyrname[0] == "charmander":
-                            cpuuacc = plyrsta.smokescreen()
-                        if plyrname[0] == "squirtle":
-                            plyrlist[2] = plyrsta.withdraw()
-                else:
-                    print("your attack missed")
-                if plyrstate == "poisoned":
-                    image(psn, 550, 535, 40, 20)
-                    print(plyrname[0], "is hurt by poison")
-                    plyrlist[0] = plyrlist[0] - (plyrlist[0] * 0.16)   
-                if cpulist[6] <= 0: #if cpu health is equal or below 0
-                    mode = 5 #victory
-                else:    
-                    mode = 4 #cpu turn
-    
-    if mode == 4: #cpu turn
+        rect(650, 540, plyrStats[0], 10)
+        rect(100, 265, cpuStats[6], 10)
+    # CPU Turn
+    elif mode == 4:
         accucpu = int(random(0, cpuacc))
         if accucpu == 0:
             r1 = int(random(0, 3)) #the move the cpu uses is always random
             if r1 == 0:
-                print(cpuname[7], "used", cpuname[10])
-                if cpuname[7] == "bulbasaur" or cpuname[7] == "squirtle":
-                    plyrlist[0] = plyrlist[0] - cpuatk.tackle()
-                if cpuname[7] == "charmander":
-                    plyrlist[1] = cpusta.growl()
+                print(cpuNames[7], "used", cpuNames[10])
+                if cpuNames[7] == "bulbasaur" or cpuNames[7] == "squirtle":
+                    plyrStats[0] = plyrStats[0] - cpuatk.tackle()
+                if cpuNames[7] == "charmander":
+                    plyrStats[1] = cpusta.growl()
                     
             if r1 == 1:
-                print(cpuname[7], "used", cpuname[11])
-                if cpuname[7] == "bulbasaur":
-                    plyrlist[0] = plyrlist[0] - cpuatk.vinewhip()
-                    if plyrname[1] == "fire" or plyrname[1] == "grass":
+                print(cpuNames[7], "used", cpuNames[11])
+                if cpuNames[7] == "bulbasaur":
+                    plyrStats[0] = plyrStats[0] - cpuatk.vinewhip()
+                    if plyrNames[1] == "fire" or plyrNames[1] == "grass":
                         print("it's not very effective")
-                    if plyrname[1] == "water":
+                    if plyrNames[1] == "water":
                         print("it's super effective")
-                if cpuname[7] == "charmander":
-                    plyrlist[0] = plyrlist[0] - cpuatk.scratch()
-                if cpuname[7] == "squirtle":
-                    plyrlist[2] = cpusta.tailwhip()
+                if cpuNames[7] == "charmander":
+                    plyrStats[0] = plyrStats[0] - cpuatk.scratch()
+                if cpuNames[7] == "squirtle":
+                    plyrStats[2] = cpusta.tailwhip()
                     
             if r1 == 2:
-                print(cpuname[7], "used", cpuname[12])
-                if cpuname[7] == "bulbasaur":
-                    plyrlist[1] = cpusta.growl()
-                if cpuname[7] == "charmander":
-                    plyrlist[0] = plyrlist[0] - cpuspatk.ember()
-                    if plyrname[1] == "fire" or plyrname[1] == "water":
+                print(cpuNames[7], "used", cpuNames[12])
+                if cpuNames[7] == "bulbasaur":
+                    plyrStats[1] = cpusta.growl()
+                if cpuNames[7] == "charmander":
+                    plyrStats[0] = plyrStats[0] - cpuspatk.ember()
+                    if plyrNames[1] == "fire" or plyrNames[1] == "water":
                         print("it's not very effective")
-                    if plyrname[1] == "grass":
+                    if plyrNames[1] == "grass":
                         print("it's super effective")
-                if cpuname[7] == "squirtle":
-                    plyrlist[0] = plyrlist[0] - cpuspatk.bubble()
-                    if plyrname[1] == "water" or plyrname[1] == "grass":
+                if cpuNames[7] == "squirtle":
+                    plyrStats[0] = plyrStats[0] - cpuspatk.bubble()
+                    if plyrNames[1] == "water" or plyrNames[1] == "grass":
                         print("it's not very effective")
-                    if plyrname[1] == "fire":
+                    if plyrNames[1] == "fire":
                         print("it's super effective")
             
             if r1 == 3:
-                print(cpuname[7], "used", cpuname[13])
-                if cpuname[0] == "Bulbasaur":
+                print(cpuNames[7], "used", cpuNames[13])
+                if cpuNames[0] == "Bulbasaur":
                     plyrstate = cpusta.poisonpowder()
-                if cpuname[0] == "Charmander":
+                if cpuNames[0] == "Charmander":
                     plyracc = cpusta.smokescreen()
-                if cpuname[0] == "Squirtle":
-                    cpulist[8] = cpusta.withdraw() 
+                if cpuNames[0] == "Squirtle":
+                    cpuStats[8] = cpusta.withdraw() 
         else:
             print("oppponent missed")
         if cpustate == "poisoned":
             image(psn, 25, 260, 40, 20)
-            print(cpuname[7], "is hurt by poison")
-            cpulist[6] = cpulist[6] - (cpulist[6] * 0.16)
-        if plyrlist[0] <= 0: #if player health is equal or below 0
+            print(cpuNames[7], "is hurt by poison")
+            cpuStats[6] = cpuStats[6] - (cpuStats[6] * 0.16)
+        if plyrStats[0] <= 0: #if player health is equal or below 0
             mode = 6 #loss
         else:
             mode = 3 #player turn
-    
-    if mode == 5: #victory screen
+    #Player Win
+    elif mode == 5:
         image(win, 0, 0, 800, 800)
-    if mode == 6: #losing screen
+    #PLayer Loss
+    elif mode == 6:
         image(lose, 0, 0, 800, 800)
-        
+
 def keyPressed():
-    global plyrlist, plyrname
-    global cpulist, cpuname, weather
-    global x, y, p, c, l, mode, x1, y1
+    global playerPokemon, plyrStats, plyrNames, accuplyr
+    global cpuStats, cpuNames
+    global x, y, l, mode, x1, y1
     #the movement controls for the cursors
-    if mode == 1:
-        if keyCode == LEFT or key == 'a': #left
+    if mode == 1: #Pokemon Selection
+        if keyCode == ENTER: #depending on the position of the cursor, different pokemon are selected
+            if x == 200:
+                playerPokemon.__setPokemon__('bulbasaur')
+                print playerPokemon.__getStats__(), playerPokemon.__getNames__()
+                mode = 2 #cpu choice
+            elif x == 400:
+                playerPokemon.__setPokemon__('charmander')
+                print playerPokemon.__getStats__(), playerPokemon.__getNames__()
+                mode = 2 
+            elif x == 600:
+                playerPokemon.__setPokemon__('squirtle')
+                print playerPokemon.__getStats__(), playerPokemon.__getNames__()
+                mode = 2
+            plyrStats, plyrNames = playerPokemon.__getStats__(), playerPokemon.__getNames__()
+        elif keyCode == LEFT or key == 'a': #left
             x = x - 200
             if x < 200:
                 x = 600
-        if keyCode == RIGHT or key == 'd': #right
+        elif keyCode == RIGHT or key == 'd': #right
             x = x + 200
             if x > 600:
                 x = 200
-    if mode == 3:
+    elif mode == 3: #Battle Mode
+        if keyPressed:
+            if keyCode == ENTER: #select move with ENTER
+                accuplyr = int(random(0, plyracc)) #checks to see if you hit the target
+                if accuplyr == 0: #the higher plyracc, the more likely to miss
+                    if x1 == 25: #cursor position and pokemon affect which move is used
+                        print(plyrNames[0], "used", plyrNames[3])
+                        if plyrNames[0] == "bulbasaur" or plyrNames[0] == "squirtle":
+                            cpuStats[6] = cpuStats[6] - plyratk.tackle()
+                        if plyrNames[0] == "charmander":
+                            cpuStats[7] = plyrsta.growl()
+                    elif x1 == 175:
+                        print(plyrNames[0], "used", plyrNames[4])
+                        if plyrNames[0] == "bulbasaur":
+                            cpuStats[6] = cpuStats[6] - plyratk.vinewhip()
+                            if cpuNames[8] == "fire" or cpuNames[8] == "grass":
+                                print ("it's not very effective")
+                            if cpuNames[8] == "water":
+                                print("it's super effective")
+                        if plyrNames[0] == "charmander":
+                            cpuStats[6] = cpuStats[6] - plyratk.scratch()
+                        if plyrNames[0] == "squirtle":
+                            cpuStats[8] = plyrsta.tailwhip()
+                    elif x1 == 325:
+                        print(plyrNames[0], "used", plyrNames[5])
+                        if plyrNames[0] == "bulbasaur":
+                            cpuStats[7] = plyrsta.growl()
+                        if plyrNames[0] == "charmander":
+                            cpuStats[6] = cpuStats[6] - plyrspatk.ember()
+                            if cpuNames[8] == "fire" or cpuNames[8] == "water":
+                                print ("it's not very effective")
+                            if cpuNames[8] == "grass":
+                                print("it's super effective")
+                        if plyrNames[0] == "squirtle":
+                            cpuStats[6] = cpuStats[6] - plyrspatk.bubble()
+                            if cpuNames[8] == "grass" or cpuNames[8] == "water":
+                                print ("it's not very effective")
+                            if cpuNames[8] == "fire":
+                                print("it's super effective")
+                    elif x1 == 475:
+                        print(plyrNames[0], "used", plyrNames[6])
+                        if plyrNames[0] == "bulbasaur":
+                            cpustate = plyrsta.poisonpowder()
+                        if plyrNames[0] == "charmander":
+                            cpuuacc = plyrsta.smokescreen()
+                        if plyrNames[0] == "squirtle":
+                            plyrStats[2] = plyrsta.withdraw()
+                else:
+                    print("your attack missed")
+                if plyrstate == "poisoned":
+                    image(psn, 550, 535, 40, 20)
+                    print(plyrNames[0], "is hurt by poison")
+                    plyrStats[0] = plyrStats[0] - (plyrStats[0] * 0.16)
+                if cpuStats[6] <= 0: #if cpu health is equal or below 0
+                    mode = 5 #victory
+                else:
+                    mode = 4 #cpu turn
         if keyCode == LEFT or key == 'a': #left
             x1 = x1 - 150
             if x1 < 25:
                 x1 = 475
-        if keyCode == RIGHT or key == 'd': #right
+        elif keyCode == RIGHT or key == 'd': #right
             x1 = x1 + 150
             if x1 > 600:
                 x1 = 25

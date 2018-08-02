@@ -1,3 +1,5 @@
+from Pokemon import *
+
 class StatusMove: #for status variables, there are two options, convert the stat (as shown below) and make that value equal to current stats or take a changed value in the stat and subtract it or add it from the original value
     def __init__ (self, hp, atk, defn, state, accuracy, selfdef): #no damage but alters stats of pokemon
         self.hp = hp
