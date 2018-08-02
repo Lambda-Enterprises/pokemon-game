@@ -5,7 +5,7 @@ class Type:
         self.notEffective = notEffective
         self.noEffect = noEffect
     def loadType (self, name):
-        typedict = {
+        typeDict = {
             'normal' : MoveTypes('normal', [], ['rock', 'steel'], ['ghost']),
             'fire' : MoveTypes('fire', ['grass', 'bug', 'ice', 'steel'], ['water', 'fire', 'dragon', 'rock', 'ground'], []),
             'water' : MoveTypes('water', ['fire', 'rock', 'ground'], ['water', 'dragon', 'grass', 'steel'], []),

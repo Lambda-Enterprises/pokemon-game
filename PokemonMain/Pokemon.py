@@ -1,5 +1,6 @@
 from Pokedex import *
 from Type import *
+from Move import *
 
 class Pokemon: #holds all the stats for each pokemon
     def __init__(self, name=""):

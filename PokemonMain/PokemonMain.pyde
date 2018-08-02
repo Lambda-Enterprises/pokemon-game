@@ -12,15 +12,18 @@ def setup():
     global x, y, mode, r, textbox, x1, y1, win, lose
     global bulb, charm, squir, stage, select, weather
     global bulbf, bulbb, charf, charb, squirf, squirb
-    size(800, 700)
+    
+    playerPokemon = Pokemon() #calls upon PokemonData to receive the class stats for the lists
     plyrStats = [] #these are the actual lists that will hold the stats for the player and cpu
     plyrNames = []
     plyraccu = 0
     
+    comPokemon = Pokemon()
     cpuStats = []
     cpuNames = []
     cpuaccu = 0
     
+    size(800, 700)
     bulb = loadImage("bulbasaur.png")
     charm = loadImage("charmander.png")
     squir = loadImage("squirtle.png")
@@ -37,8 +40,6 @@ def setup():
     psn = loadImage("poison.png")
     win = loadImage("win.png")
     lose = loadImage("fail.png")
-    playerPokemon = Pokemon() #calls upon PokemonData to receive the class stats for the lists
-    comPokemon = Pokemon()
     
     #below are starting variables that may change later on
     plyracc = 0
