@@ -8,6 +8,8 @@ class Move:
        self.power = power
        self.accuracy = accuracy
     
+    def 
+    
     def loadMove(self, name):
         moveDict = {
             
