@@ -1,4 +1,11 @@
 from time import sleep
+from PhysicalMoves import *
+from PokemonList import *
+from StatusMoves import *
+
+c1 = 0 #counters for animation
+c2 = 0
+c3 = 0
 
 def setup():
     global plyrlist, plyrname, plyrbox, plyracc, plyratk, plyrspatk, plyrsta, plyrstate, plyracc, cpuacc, accuplyr, accucpu, psn
@@ -10,11 +17,11 @@ def setup():
     plyrlist = [] #these are the actual lists that will hold the stats for the player and cpu
     plyrname = []
     plyraccu = 0
-   
+    
     cpulist = []
     cpuname = []
     cpuaccu = 0
-
+    
     bulb = loadImage("bulbasaur.png")
     charm = loadImage("charmander.png")
     squir = loadImage("squirtle.png")
@@ -31,8 +38,8 @@ def setup():
     psn = loadImage("poison.png")
     win = loadImage("win.png")
     lose = loadImage("fail.png")
-    p = pokemondata() #calls upon pokemondata to receive the class stats for the lists
-    c = pokemondata()
+    p = PokemonData() #calls upon PokemonData to receive the class stats for the lists
+    c = PokemonData()
     l = p
     m = c
     #below are starting variables that are changed later on
@@ -97,7 +104,7 @@ def draw():
     delay(50)
     if c1 == 15:
         c1 = 0
-     
+    
     #your pokemon
     if mode == 1:
         text("LEFT and RIGHT to move, u to select", 0, 32)
@@ -149,12 +156,12 @@ def draw():
         image (textbox, 0, 600, 800, 100)
         image (select, x1, y1, 15, 15)
         #below are damage and stat values given based on the values in the lists
-        plyratk = MoveDamage(50, plyrlist[1], cpulist[8], plyrname[1], cpuname[8], cpuacc, weather, 0)
-        plyrspatk = MoveDamage(50, plyrlist[3], cpulist[10], plyrname[1], cpuname[8], cpuacc, weather, 0)
-        plyrsta = Status(cpulist[6], cpulist[7], cpulist[8], cpustate, cpuacc, plyrlist[2])
-        cpuatk = MoveDamage(50, cpulist[7], plyrlist[2], cpuname[8], plyrname[1], plyracc, weather, 0)
-        cpuspatk = MoveDamage(50, cpulist[9], plyrlist[4], cpuname[8], plyrname[1], plyracc, weather, 0)
-        cpusta = Status(plyrlist[0], plyrlist[1], plyrlist[2], plyrstate, plyracc, cpulist[8]) 
+        plyratk = PhysicalMove(50, plyrlist[1], cpulist[8], plyrname[1], cpuname[8], cpuacc, weather, 0)
+        plyrspatk = PhysicalMove(50, plyrlist[3], cpulist[10], plyrname[1], cpuname[8], cpuacc, weather, 0)
+        plyrsta = StatusMoves(cpulist[6], cpulist[7], cpulist[8], cpustate, cpuacc, plyrlist[2])
+        cpuatk = PhysicalMove(50, cpulist[7], plyrlist[2], cpuname[8], plyrname[1], plyracc, weather, 0)
+        cpuspatk = PhysicalMove(50, cpulist[9], plyrlist[4], cpuname[8], plyrname[1], plyracc, weather, 0)
+        cpusta = StatusMoves(plyrlist[0], plyrlist[1], plyrlist[2], plyrstate, plyracc, cpulist[8]) 
         #more animation
         if plyrname[0] == "bulbasaur":
             c = (c2 % 2) * 80
@@ -177,7 +184,7 @@ def draw():
             c2 = c2 + 1
             if c2 == 2:
                 c2 = 0
-                
+        
         if cpuname[7] == "bulbasaur":
             e = (c3 % 2) * 80
             f = (c3 / 2) * 80
@@ -229,7 +236,6 @@ def draw():
                         if plyrname[0] == "charmander":
                             cpulist[7] = plyrsta.growl()
                         
-                        
                     if x1 == 175:
                         print(plyrname[0], "used", plyrname[4])
                         if plyrname[0] == "bulbasaur":
@@ -243,7 +249,6 @@ def draw():
                         if plyrname[0] == "squirtle":
                             cpulist[8] = plyrsta.tailwhip()
                         
-        
                     if x1 == 325:
                         print(plyrname[0], "used", plyrname[5])
                         if plyrname[0] == "bulbasaur":
@@ -260,7 +265,6 @@ def draw():
                                 print ("it's not very effective")
                             if cpuname[8] == "fire":
                                 print("it's super effective")
-                        
                         
                     if x1 == 475:
                         print(plyrname[0], "used", plyrname[6])  
@@ -281,7 +285,7 @@ def draw():
                     mode = 5 #victory
                 else:    
                     mode = 4 #cpu turn
-            
+    
     if mode == 4: #cpu turn
         accucpu = int(random(0, cpuacc))
         if accucpu == 0:
@@ -325,11 +329,11 @@ def draw():
             
             if r1 == 3:
                 print(cpuname[7], "used", cpuname[13])
-                if cpuname[0] == "bulbasaur":
+                if cpuname[0] == "Bulbasaur":
                     plyrstate = cpusta.poisonpowder()
-                if cpuname[0] == "charmander":
+                if cpuname[0] == "Charmander":
                     plyracc = cpusta.smokescreen()
-                if cpuname[0] == "squirtle":
+                if cpuname[0] == "Squirtle":
                     cpulist[8] = cpusta.withdraw() 
         else:
             print("oppponent missed")
