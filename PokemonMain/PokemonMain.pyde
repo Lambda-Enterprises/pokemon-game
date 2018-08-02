@@ -74,7 +74,7 @@ def setup():
         mode = 3 #battlemode
         print ("press i to select move")
     elif r == 1:
-        playerPokemon.__setPokemon__('charmander')
+        playerPokemon.__setPokemonList__('charmander')
         print (comPokemon.__getStats__(), comPokemon.__getNames__())
         mode = 3
         print ("press i to select move")

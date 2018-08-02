@@ -1,12 +1,33 @@
 from Pokedex import *
 
 class Pokemon: #holds all the stats for each pokemon
-    def __init__(self):
+    def __init__(self, name=""):
         self.pokedex = Pokedex()
-        self.stats = []
-        self.names = []
+        if name != "":
+            self.__setPokemonLists__(name)
+            self.lvl = self.stats[0]
+            self.hp = self.stats[1]
+            self.atk = self.stats[2]
+            self.defn = self.stats[3]
+            self.spatk = self.stats[4]
+            self.spdefn = self.stats[5]
+            self.sp = self.stats[6]
+            self.name = self.names[0]
+            self.type = [self.names[1], self.names[2]]
+            self.move = [self.names[3], self.names[4], self.names[5], self.names[6]]
+        else:
+            self.lvl = 0
+            self.hp = 0
+            self.atk = 0
+            self.defn = 0
+            self.spatk = 0
+            self.spdefn = 0
+            self.sp = 0
+            self.name = ""
+            self.type = ["", ""]
+            self.move = ["", "", "", ""]
     
-    def __setPokemon__(self, name):
+    def __setPokemonLists__(self, name):
         if name == 'chimchar':
             (self.stats, self.names) = self.pokedex.chimchar()
         elif name == 'eevee':
@@ -22,8 +43,14 @@ class Pokemon: #holds all the stats for each pokemon
         else:
             raise Exception('Invalid Pokemon!')
     
-    def __getStats__(self):
-        return self.stats
-    
-    def __getNames__(self):
-        return self.names
+    def __setPokemonStats__(self, name):
+        self.lvl = self.stats[0]
+        self.hp = self.stats[1]
+        self.atk = self.stats[2]
+        self.defn = self.stats[3]
+        self.spatk = self.stats[4]
+        self.spdefn = self.stats[5]
+        self.sp = self.stats[6]
+        self.name = self.names[0]
+        self.type = [self.names[1], self.names[2]]
+        self.move = [self.names[3], self.names[4], self.names[5], self.names[6]]
