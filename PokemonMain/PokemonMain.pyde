@@ -113,38 +113,38 @@ def draw():
         if keyPressed:
             if key == 'u': #depending on the position of the cursor, different pokemon are selected
                 if x == 200:
-                    plyrlist.extend(l.__getitem__(p.bulbasaur())) #calls upon the class and obtains the proper variables
-                    plyrname.extend(l.__getitem1__(p.bulbasaur()))
+                    plyrlist.extend(l.__getStats__(p.bulbasaur())) #calls upon the class and obtains the proper variables
+                    plyrname.extend(l.__getNames__(p.bulbasaur()))
                     print plyrlist, plyrname 
                     mode = 2 #cpu choice
                 elif x == 400:
-                    plyrlist.extend(l.__getitem__(p.charmander()))
-                    plyrname.extend(l.__getitem1__(p.charmander()))
+                    plyrlist.extend(l.__getStats__(p.charmander()))
+                    plyrname.extend(l.__getNames__(p.charmander()))
                     print plyrlist, plyrname
                     mode = 2 
                 elif x == 600:
-                    plyrlist.extend(l.__getitem__(p.squirtle()))
-                    plyrname.extend(l.__getitem1__(p.squirtle()))
+                    plyrlist.extend(l.__getStats__(p.squirtle()))
+                    plyrname.extend(l.__getNames__(p.squirtle()))
                     print plyrlist, plyrname
                     mode = 2
     #cpu pokemon
     if mode == 2:
         r = int(random(2)) #cpu's pokemon is always random each battle
         if r == 0:
-            cpulist.extend(m.__getitem__(c.bulbasaur()))
-            cpuname.extend(m.__getitem1__(c.bulbasaur()))
+            cpulist.extend(m.__getStats__(c.bulbasaur()))
+            cpuname.extend(m.__getNames__(c.bulbasaur()))
             print cpulist, cpuname
             mode = 3 #battlemode
             print ("press i to select move")
         elif r == 1:
-            cpulist.extend(m.__getitem__(c.charmander()))
-            cpuname.extend(m.__getitem1__(c.charmander()))
+            cpulist.extend(m.__getStats__(c.charmander()))
+            cpuname.extend(m.__getNames__(c.charmander()))
             print cpulist, cpuname
             mode = 3
             print ("press i to select move")
         elif r == 2:
-            cpulist.extend(m.__getitem__(c.squirtle()))
-            cpuname.extend(m.__getitem1__(c.squirtle()))
+            cpulist.extend(m.__getStats__(c.squirtle()))
+            cpuname.extend(m.__getNames__(c.squirtle()))
             print cpulist, cpuname
             mode = 3
             print ("press i to select move")
