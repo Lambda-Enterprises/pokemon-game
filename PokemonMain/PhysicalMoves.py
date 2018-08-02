@@ -134,3 +134,7 @@ class PhysicalMove: #class calculates damage value from attacks
             self.dmg = self.dmg * 0.5
         return (self.dmg)
         return (self.accuracy)
+    
+    def dig (self):
+        typemove = "ground"
+        
