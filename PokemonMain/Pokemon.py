@@ -3,56 +3,33 @@ from Type import *
 from Move import *
 
 class Pokemon: #holds all the stats for each pokemon
-    def __init__(self, name=""):
-        self.pokedex = Pokedex()
-        if name != "":
-            self.__setPokemonLists__(name)
-            self.lvl = self.stats[0]
-            self.hp = self.stats[1]
-            self.atk = self.stats[2]
-            self.defn = self.stats[3]
-            self.spatk = self.stats[4]
-            self.spdefn = self.stats[5]
-            self.sp = self.stats[6]
-            self.name = self.names[0]
-            self.type = [self.names[1], self.names[2]]
-            self.move = [self.names[3], self.names[4], self.names[5], self.names[6]]
-        else:
-            self.lvl = 0
-            self.hp = 0
-            self.atk = 0
-            self.defn = 0
-            self.spatk = 0
-            self.spdefn = 0
-            self.sp = 0
-            self.name = ""
-            self.type = ["", ""]
-            self.move = ["", "", "", ""]
+    def __init__(self, lvl = 0, hp = 0, atk = 0, defn = 0, spatk = 0, spdefn = 0, sp = 0,
+                 name = "", type = [None, None], move = [None, None, None, None]):
+        self.lvl = lvl
+        self.hp = hp
+        self.atk = atk
+        self.defn = defn
+        self.spatk = spatk
+        self.spdefn = spdefn
+        self.sp = sp
+        self.name = name
+        self.type = type
+        self.move = move
     
-    def __setPokemonLists__(self, name):
-        if name == 'chimchar':
-            (self.stats, self.names) = self.pokedex.chimchar()
-        elif name == 'eevee':
-            (self.stats, self.names) = self.pokedex.eevee()
-        elif name == 'bidoof':
-            (self.stats, self.names) = self.pokedex.bidoof()
-        elif name == 'bulbasaur':
-            (self.stats, self.names) = self.pokedex.bulbasaur()
-        elif name == 'charmander':
-            (self.stats, self.names) = self.pokedex.charmander()
-        elif name == 'squirtle':
-            (self.stats, self.names) = self.pokedex.squirtle()
-        else:
-            raise Exception('Invalid Pokemon!')
+    def setPokemon(self, name):
+        pokeDict = loadPokemon(name)
+        stats = pokeDict['stats']
+        names = pokeDict['names']
+        (self.lvl, self.hp, self.atk, self.defn, 
+         self.spatk, self.spdefn, self.sp) = tuple(x for x in stats)
+        self.name = names[0]
+        self.type = [Type.loadType(x) for x in names[1:3]]
+        self.move = [Move.loadMove(x) for x in names[3:]]
     
-    def __setPokemonStats__(self, name):
-        self.lvl = self.stats[0]
-        self.hp = self.stats[1]
-        self.atk = self.stats[2]
-        self.defn = self.stats[3]
-        self.spatk = self.stats[4]
-        self.spdefn = self.stats[5]
-        self.sp = self.stats[6]
-        self.name = self.names[0]
-        self.type = [self.names[1], self.names[2]]
-        self.move = [self.names[3], self.names[4], self.names[5], self.names[6]]
+    def getStats(self, name):
+        pokeDict = loadPokemon(self.name)
+        return pokeDict['stats']
+    
+    def getNames(self, name):
+        pokeDict = loadPokemon(self.name)
+        return pokeDict['names']

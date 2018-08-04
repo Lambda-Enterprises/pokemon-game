@@ -1,9 +1,10 @@
 from time import sleep
 from Pokemon import *
 
-c1 = 0 #counters for animation
-c2 = 0
-c3 = 0
+#Used for animation
+counter1 = 0
+counter2 = 0
+counter3 = 0
 
 def setup():
     global plyrStats, plyrNames, plyrbox, plyracc, plyratk, plyrspatk, plyrsta, plyrstate, plyracc, cpuacc, accuplyr, accucpu, psn
@@ -13,15 +14,8 @@ def setup():
     global bulb, charm, squir, stage, select, weather
     global bulbf, bulbb, charf, charb, squirf, squirb
     
-    playerPokemon = Pokemon() #calls upon PokemonData to receive the class stats for the lists
-    plyrStats = [] #these are the actual lists that will hold the stats for the player and cpu
-    plyrNames = []
-    plyraccu = 0
-    
+    playerPokemon = Pokemon()
     comPokemon = Pokemon()
-    cpuStats = []
-    cpuNames = []
-    cpuaccu = 0
     
     size(800, 700)
     bulb = loadImage("bulbasaur.png")
@@ -48,14 +42,7 @@ def setup():
     cpuacc = 0
     acccpu = 0
     cpustate = "normal"
-    weather = "clear"
-    
-    plyratk = 0
-    plyrspatk = 0
-    plyrsta = 0
-    cpuatk = 0
-    cpuspatk = 0
-    cpusta = 0
+    #weather = "clear" #implement later
     
     #below are the coordinates for the cursor which can be changed to move its position
     x = 200 #helps to choose pokemon and moves
@@ -68,8 +55,8 @@ def setup():
     #cpu pokemon
     r = int(random(2)) #cpu's pokemon is always random each battle
     if r == 0:
-        playerPokemon.__setPokemon__('bulbasaur')
-        print (comPokemon.__getStats__(), comPokemon.__getNames__())
+        playerPokemon.setPokemon('Bulbasaur')
+        print (comPokemon.getStats(), comPokemon.__getNames__())
         mode = 3 #battlemode
         print ("press i to select move")
     elif r == 1:
@@ -85,7 +72,7 @@ def setup():
     cpuStats, cpuNames = comPokemon.__getStats__(), comPokemon.__getNames__()
 
 def draw():
-    global x, y, mode, c1, c2, c3, r, x1, y1
+    global x, y, mode, counter1, counter2, counter3, r, x1, y1
     global playerPokemon, comPokemon
     global plyrStats, plyrNames, plyrbox, fight, plyratk, plyrspatk, cpuatk, cpuspatk, plyrsta, cpusta, plyrstate, cpustate, plyracc, cpuacc, accuplyr, accucpu, psn
     global cpuStats, cpuNames, cpubox, textbox, win, lose
@@ -100,29 +87,29 @@ def draw():
     rect(600, 400, 80, 80)
     fill(255)
     #animation
-    a = (c1 % 16) * 60
-    b = (c1 / 16) * 70
+    a = (counter1 % 16) * 60
+    b = (counter1 / 16) * 70
     copy(bulb, a, b, 60, 70, 100, 100, 180, 213)
-    c1 = c1 + 1 #runs through a sprite sheet to create the animation
+    counter1 = counter1 + 1 #runs through a sprite sheet to create the animation
     delay(50)
-    if c1 == 15:
-        c1 = 0
+    if counter1 == 15:
+        counter1 = 0
     
-    a = (c1 % 16) * 60
-    b = (c1 / 16) * 70
+    a = (counter1 % 16) * 60
+    b = (counter1 / 16) * 70
     copy(charm, a, b, 60, 70, 300, 100, 180, 213)
-    c1 = c1 + 1
+    counter1 = counter1 + 1
     delay(50)
-    if c1 == 15:
-        c1 = 0
+    if counter1 == 15:
+        counter1 = 0
     
-    a = (c1 % 16) * 60
-    b = (c1 / 16) * 70
+    a = (counter1 % 16) * 60
+    b = (counter1 / 16) * 70
     copy(squir, a, b, 60, 70, 500, 100, 180, 213)
-    c1 = c1 + 1
+    counter1 = counter1 + 1
     delay(50)
-    if c1 == 15:
-        c1 = 0
+    if counter1 == 15:
+        counter1 = 0
     
     #Pokemon Selection
     if mode == 1:
@@ -145,48 +132,48 @@ def draw():
         cpusta = StatusMove(plyrStats[0], plyrStats[1], plyrStats[2], plyrstate, plyracc, cpuStats[8]) 
         #more animation
         if plyrNames[0] == "bulbasaur":
-            c = (c2 % 2) * 80
-            d = (c2 / 2) * 61
+            c = (counter2 % 2) * 80
+            d = (counter2 / 2) * 61
             copy (bulbb, c, d, 80, 61, 100, 440, 160, 160)
-            c2 = c2 + 1
-            if c2 == 2:
-                c2 = 0
+            counter2 = counter2 + 1
+            if counter2 == 2:
+                counter2 = 0
         elif plyrNames[0] == "charmander":
-            c = (c2 % 2) * 80
-            d = (c2 / 2) * 61
+            c = (counter2 % 2) * 80
+            d = (counter2 / 2) * 61
             copy (charb, c, d, 80, 61, 100, 440, 160, 160)
-            c2 = c2 + 1
-            if c2 == 2:
-                c2 = 0
+            counter2 = counter2 + 1
+            if counter2 == 2:
+                counter2 = 0
         else:
-            c = (c2 % 2) * 80
-            d = (c2 / 2) * 80
+            c = (counter2 % 2) * 80
+            d = (counter2 / 2) * 80
             copy (squirb, c, d, 80, 61, 100, 440, 160, 160)
-            c2 = c2 + 1
-            if c2 == 2:
-                c2 = 0
+            counter2 = counter2 + 1
+            if counter2 == 2:
+                counter2 = 0
         
         if cpuNames[7] == "bulbasaur":
-            e = (c3 % 2) * 80
-            f = (c3 / 2) * 80
+            e = (counter3 % 2) * 80
+            f = (counter3 / 2) * 80
             copy (bulbf, e, f, 80, 80, 470, 210, 240, 240)
-            c3 = c3 + 1
-            if c3 == 2:
-                c3 = 0
+            counter3 = counter3 + 1
+            if counter3 == 2:
+                counter3 = 0
         elif cpuNames[7] == "charmander":
-            e = (c3 % 2) * 80
-            f = (c3 / 2) * 80
+            e = (counter3 % 2) * 80
+            f = (counter3 / 2) * 80
             copy (charf, e, f, 80, 80, 470, 210, 240, 240)
-            c3 = c3 + 1
-            if c3 == 2:
-                c3 = 0
+            counter3 = counter3 + 1
+            if counter3 == 2:
+                counter3 = 0
         elif cpuNames[7] == "squirtle":
-            e = (c3 % 2) * 80
-            f = (c3 / 2) * 80
+            e = (counter3 % 2) * 80
+            f = (counter3 / 2) * 80
             copy (squirf, e, f, 80, 80, 470, 210, 240, 240)
-            c3 = c3 + 1
-            if c3 == 2:
-                c3 = 0
+            counter3 = counter3 + 1
+            if counter3 == 2:
+                counter3 = 0
         #sets the text to suit the pokemon selected
         fill (0)
         text (plyrNames[0], 520, 525)

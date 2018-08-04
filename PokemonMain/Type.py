@@ -4,30 +4,31 @@ class Type:
         self.superEffective = superEffective
         self.notEffective = notEffective
         self.noEffect = noEffect
-    def loadType (self, name):
+    
+    @staticmethod
+    def loadType (name):
         typeDict = {
-            'normal' : MoveTypes('normal', [], ['rock', 'steel'], ['ghost']),
-            'fire' : MoveTypes('fire', ['grass', 'bug', 'ice', 'steel'], ['water', 'fire', 'dragon', 'rock', 'ground'], []),
-            'water' : MoveTypes('water', ['fire', 'rock', 'ground'], ['water', 'dragon', 'grass', 'steel'], []),
-            'grass' : MoveTypes('grass', ['water', 'rock', 'ground'], ['grass', 'fire', 'poison', 'bug', 'ice', 'flying', 'steel'], []),
-            'electric' : MoveTypes('electric', ['water', 'flying'], ['rock', 'dragon', 'steel', 'electric'], ['ground']),
-            'fighting' : MoveTypes('fighting', ['normal', 'rock', 'steel', 'dark'], ['flying', 'poison', 'psychic'], ['ghost']),
-            'flying' : MoveTypes('flying', ['grass', 'bug', 'fighting'], ['electric', 'ice', 'rock', 'steel'], []),
-            'ground' : MoveTypes('ground', ['electric', 'rock', 'fire'], ['ice'], ['flying']),
-            'rock' : MoveTypes('rock', ['bug', 'flying', 'ice', 'fire'], ['water', 'grass', 'steel', 'rock'], []),
-            'psychic' : MoveTypes('psychic', ['fighting', 'poison'], ['ghost', 'bug', 'steel'], ['dark']),
-            'ghost' : MoveTypes('ghost', ['ghost', 'psychic'], ['dark'], ['normal']),
-            'dark' : MoveTypes('dark', ['ghost', 'psychic'], ['bug', 'fighting'], []),
-            'dragon' : MoveTypes('dragon', ['dragon'], ['ice'], []),
-            'steel' : MoveTypes('steel', ['rock', 'ice'], ['dragon'], []),
-            'poison' : MoveTypes('poison', ['grass', 'bug'], ['rock', 'ground'], ['steel']),
-            'ice' : MoveTypes('ice', ['grass', 'bug', 'flying', 'ground', 'dragon'], ['water', 'fire', 'steel'], [])
+            'normal': Type('normal', [], ['rock', 'steel'], ['ghost']),
+            'fire': Type('fire', ['grass', 'bug', 'ice', 'steel'], ['water', 'fire', 'dragon', 'rock', 'ground'], []),
+            'water': Type('water', ['fire', 'rock', 'ground'], ['water', 'dragon', 'grass', 'steel'], []),
+            'grass': Type('grass', ['water', 'rock', 'ground'], ['grass', 'fire', 'poison', 'bug', 'ice', 'flying', 'steel'], []),
+            'electric': Type('electric', ['water', 'flying'], ['rock', 'dragon', 'steel', 'electric'], ['ground']),
+            'fighting': Type('fighting', ['normal', 'rock', 'steel', 'dark'], ['flying', 'poison', 'psychic'], ['ghost']),
+            'flying': Type('flying', ['grass', 'bug', 'fighting'], ['electric', 'ice', 'rock', 'steel'], []),
+            'ground': Type('ground', ['electric', 'rock', 'fire'], ['ice'], ['flying']),
+            'rock': Type('rock', ['bug', 'flying', 'ice', 'fire'], ['water', 'grass', 'steel', 'rock'], []),
+            'psychic': Type('psychic', ['fighting', 'poison'], ['ghost', 'bug', 'steel'], ['dark']),
+            'ghost': Type('ghost', ['ghost', 'psychic'], ['dark'], ['normal']),
+            'dark': Type('dark', ['ghost', 'psychic'], ['bug', 'fighting'], []),
+            'dragon': Type('dragon', ['dragon'], ['ice'], []),
+            'steel': Type('steel', ['rock', 'ice'], ['dragon'], []),
+            'poison': Type('poison', ['grass', 'bug'], ['rock', 'ground'], ['steel']),
+            'ice': Type('ice', ['grass', 'bug', 'flying', 'ground', 'dragon'], ['water', 'fire', 'steel'], [])
         }
         
-        return(typedict[name])
+        return(typeDict[name])
 
 """
-x = MoveTypes()
-x = x.loadType('normal')
-print (x.name, x.supereffective, x.noteffective)
+x = Type.loadType('normal')
+print (x.name, x.superEffective, x.notEffective)
 """
