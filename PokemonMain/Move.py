@@ -1,12 +1,20 @@
+import json
 from Pokemon import *
 from Type import *
 
 class Move:
-    def __init__ (self, name = '', type = Type(), power = 0, accuracy = 0):
-       self.name = name
-       self.type = type
-       self.power = power
-       self.accuracy = accuracy
+    def __init__(self, name = None):
+        try:
+            with open('Data/Move.json', 'r') as file:
+                moveDict = json.loads(file.read())
+                file.close()
+            move = moveDict[name]
+            self.name = name
+            self.type = move['type']
+            self.power = move['power']
+            self.accuracy = move['accuracy']
+        except:
+            print('Invalid Move!')
     
     def calcDamage(self, atk, defn, opptype):
         mod = 1 #factor that indicates more damage
@@ -20,15 +28,12 @@ class Move:
         
         return (dmg)
     
-    @staticmethod
-    def loadMove(name):
-        moveDict = {
-            'tackle' : Move('tackle', type.loadType('normal'), 40, 100),
-            'scratch' : Move('scratch', type.loadType('normal'), 35, 100),
-            'vinewhip' : Move('vine whip', type.loadType('grass'), 45, 100),
-            'ember' : Move('ember', type.loadType('fire'), 40, 100),
-            'bubble' : Move('bubble', type.loadType('water'), 40, 100)
-        }
-        
-        return(moveDict[name])
-    
+    def setMove(self, name):
+        with open('Data/Move.json', 'r') as file:
+            moveDict = json.loads(file.read())
+            file.close()
+        move = moveDict[name]
+        self.name = name
+        self.type = move['type']
+        self.power = move['power']
+        self.accuracy = move['accuracy']

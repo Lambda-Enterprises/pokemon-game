@@ -1,4 +1,6 @@
+import json
 from time import sleep
+from Pokedex import *
 from Pokemon import *
 
 #Used for animation
@@ -7,17 +9,21 @@ counter2 = 0
 counter3 = 0
 
 def setup():
-    global plyrStats, plyrNames, plyrbox, plyracc, plyratk, plyrspatk, plyrsta, plyrstate, plyracc, cpuacc, accuplyr, accucpu, psn
-    global cpuStats, cpuNames, cpubox, cpuacc, cpuatk, cpuspatk, cpusta, cpustate
-    global playerPokemon, comPokemon
-    global x, y, mode, r, textbox, x1, y1, win, lose
-    global bulb, charm, squir, stage, select, weather
-    global bulbf, bulbb, charf, charb, squirf, squirb
+    global plyrbox
+    global player, computer
+    global x, y, x1, y1, mode, r, textbox, win, lose
+    global imageDict
     
-    playerPokemon = Pokemon()
-    comPokemon = Pokemon()
-    
+    player = Pokemon()
+    computer = Pokemon()
+    player.setPokemon("Bulbasaur")
     size(800, 700)
+    
+    with open('Data/Pokemon.json', 'r') as file:
+        pokeDict = json.loads(file.read())
+        file.close()
+    imageDict = { loadImage(i + ".png") for i in pokeDict.keys() }
+    
     bulb = loadImage("bulbasaur.png")
     charm = loadImage("charmander.png")
     squir = loadImage("squirtle.png")
@@ -55,27 +61,27 @@ def setup():
     #cpu pokemon
     r = int(random(2)) #cpu's pokemon is always random each battle
     if r == 0:
-        playerPokemon.setPokemon('Bulbasaur')
-        print (comPokemon.getStats(), comPokemon.__getNames__())
+        player.setPokemon('Bulbasaur')
+        print (computer.getStats(), computer.getNames())
         mode = 3 #battlemode
         print ("press i to select move")
     elif r == 1:
-        playerPokemon.__setPokemonList__('charmander')
-        print (comPokemon.__getStats__(), comPokemon.__getNames__())
+        player.setPokemon('charmander')
+        print (computer.getStats(), computer.getNames())
         mode = 3
         print ("press i to select move")
     elif r == 2:
-        playerPokemon.__setPokemon__('squirtle')
-        print (comPokemon.__getStats__(), comPokemon.__getNames__())
+        player.setPokemon('squirtle')
+        print (computer.getStats(), computer.getNames())
         mode = 3
         print ("press i to select move")
-    cpuStats, cpuNames = comPokemon.__getStats__(), comPokemon.__getNames__()
+    cpuStats, cpuNames = computer.getStats(), computer.getNames()
 
 def draw():
     global x, y, mode, counter1, counter2, counter3, r, x1, y1
-    global playerPokemon, comPokemon
-    global plyrStats, plyrNames, plyrbox, fight, plyratk, plyrspatk, cpuatk, cpuspatk, plyrsta, cpusta, plyrstate, cpustate, plyracc, cpuacc, accuplyr, accucpu, psn
-    global cpuStats, cpuNames, cpubox, textbox, win, lose
+    global player, computer
+    global plyrbox
+    global cpubox, textbox, win, lose
     global bulb, charm, squir, stage, select
     background(0, 125, 157)
     rect(x, y, 100, 100)
@@ -260,25 +266,25 @@ def draw():
         image(lose, 0, 0, 800, 800)
 
 def keyPressed():
-    global playerPokemon, plyrStats, plyrNames, accuplyr
+    global player, plyrStats, plyrNames, accuplyr
     global cpuStats, cpuNames
     global x, y, l, mode, x1, y1
     #the movement controls for the cursors
     if mode == 1: #Pokemon Selection
         if keyCode == ENTER: #depending on the position of the cursor, different pokemon are selected
             if x == 200:
-                playerPokemon.__setPokemon__('bulbasaur')
-                print playerPokemon.__getStats__(), playerPokemon.__getNames__()
+                player.__setPokemon__('bulbasaur')
+                print player.__getStats__(), player.__getNames__()
                 mode = 2 #cpu choice
             elif x == 400:
-                playerPokemon.__setPokemon__('charmander')
-                print playerPokemon.__getStats__(), playerPokemon.__getNames__()
+                player.__setPokemon__('charmander')
+                print player.__getStats__(), player.__getNames__()
                 mode = 2 
             elif x == 600:
-                playerPokemon.__setPokemon__('squirtle')
-                print playerPokemon.__getStats__(), playerPokemon.__getNames__()
+                player.__setPokemon__('squirtle')
+                print player.__getStats__(), player.__getNames__()
                 mode = 2
-            plyrStats, plyrNames = playerPokemon.__getStats__(), playerPokemon.__getNames__()
+            plyrStats, plyrNames = player.__getStats__(), player.__getNames__()
         elif keyCode == LEFT or key == 'a': #left
             x = x - 200
             if x < 200:

@@ -1,0 +1,32 @@
+{
+    "tackle": {
+        "type": "normal",
+        "power": 40,
+        "accuracy": 100
+    },
+    "scratch": {
+        "type": "normal",
+        "power": 35,
+        "accuracy": 100
+    },
+    "vine whip": {
+        "type": "grass",
+        "power": 45,
+        "accuracy": 100
+    },
+    "ember": {
+        "type": "fire",
+        "power": 40,
+        "accuracy": 100
+    },
+    "bubble": {
+        "type": "water",
+        "power": 40,
+        "accuracy": 100
+    },
+	"growl": {
+        "type": "normal",
+        "power": 0,
+        "accuracy": 100
+    }
+}
