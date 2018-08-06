@@ -1,4 +1,5 @@
 # Video_Game
+<<<<<<< HEAD
 
 Written in python. Use pip to install libraries if you don't already have:
 
@@ -6,3 +7,5 @@ Written in python. Use pip to install libraries if you don't already have:
 - configparser
 
 This application uses a database. The scripts used to generate the necessary tables are in a separate folder called database. This server is run on Oracle.
+=======
+>>>>>>> e6af1cab1514faef6184338f0cfcf9e334a5e186
