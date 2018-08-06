@@ -1,7 +1,9 @@
-import json
 from time import sleep
 from Pokedex import *
 from Pokemon import *
+import cx_Oracle
+#import launcher
+#launcher.create()
 
 #Used for animation
 counter1 = 0

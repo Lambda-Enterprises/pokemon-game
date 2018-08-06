@@ -1,4 +1,4 @@
-import json
+import cx_Oracle
 from Pokemon import *
 from Type import *
 
