@@ -1,4 +1,4 @@
-import cx_Oracle
+from Database import *
 from Pokemon import *
 from Type import *
 

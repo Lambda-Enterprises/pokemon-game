@@ -1,7 +1,8 @@
 from time import sleep
 from Pokedex import *
 from Pokemon import *
-import cx_Oracle
+add_library(configparser)
+from cx_Oracle import *
 #import launcher
 #launcher.create()
 
@@ -15,6 +16,12 @@ def setup():
     global player, computer
     global x, y, x1, y1, mode, r, textbox, win, lose
     global imageDict
+    
+    config = configparser.ConfigParser()
+    config.read('../../../Database.ini')
+    url = config['Database'].get('url')
+    con = cx_Oracle.connect(url)
+    cur = con.cursor()
     
     player = Pokemon()
     computer = Pokemon()

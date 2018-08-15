@@ -1,3 +1,5 @@
+from Database import *
+
 class Pokedex:
     def __init__(self):
         self.pokeList = []

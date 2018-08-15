@@ -1,9 +1,9 @@
-import cx_Oracle
+from Database import *
 from Type import *
 from Move import *
 
 class Pokemon: #holds all the stats for each pokemon
-    def __init__(self, name=None):
+    def __init__(self, name = None):
         try:
             with open('Data/Pokemon.json', 'r') as file:
                 pokeDict = json.loads(file.read())
