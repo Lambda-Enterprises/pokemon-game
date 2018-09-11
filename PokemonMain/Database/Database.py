@@ -1,5 +1,6 @@
 #add_library('cx_Oracle')
 import cx_Oracle
+import configparser
 
 class Database:
     def __init__(self, cur):

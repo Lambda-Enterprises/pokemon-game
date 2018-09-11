@@ -1,4 +1,4 @@
-from Database import *
+from Database.Database import *
 
 class Pokedex:
     def __init__(self):

@@ -1,8 +1,8 @@
 from time import sleep
-from Pokedex import *
-from Pokemon import *
-add_library(configparser)
-from cx_Oracle import *
+add_library('EntityClasses.Pokedex')
+add_library('EntityClasses.Pokemon')
+#add_library(configparser)
+#from cx_Oracle import *
 #import launcher
 #launcher.create()
 

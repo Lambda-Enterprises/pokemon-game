@@ -1,4 +1,4 @@
-from Database import *
+from Database.Database import *
 
 class Type:
     def __init__(self, name = None):

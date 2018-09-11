@@ -1,4 +1,4 @@
-from Database import *
+from Database.Database import *
 from Pokemon import *
 from Type import *
 
