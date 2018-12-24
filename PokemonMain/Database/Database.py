@@ -1,4 +1,4 @@
-import cx_Oracle
+import MySQLdb
 import configparser
 
 class Database:
@@ -9,7 +9,7 @@ class Database:
     def accessMove(self, name):
         try:
             self.cur.execute("""SELECT * FROM MOVE
-                        WHERE NAME = '""" + name + "'")
+                    WHERE NAME = '""" + name + "'")
             result = self.cur.fetchall()
             if result == None:
                 raise Exception('Invalid Type!')
@@ -22,7 +22,7 @@ class Database:
     def accessType(self, name):
         try:
             self.cur.execute("""SELECT * FROM TYPE
-                        WHERE NAME = '""" + name + "'")
+                    WHERE NAME = '""" + name + "'")
             result = self.cur.fetchall()
             if result == None:
                 raise Exception('Invalid Move!')
@@ -35,10 +35,16 @@ class Database:
     def openCon(self):
         config = configparser.ConfigParser()
         config.read('../../../Database.ini')
-        url = config['Database'].get('url')
-        self.con = cx_Oracle.connect(url)
+        self.con = MySQLdb.connect(
+            config['Database'].get('host'),
+            config['Database'].get('user'),
+            config['Database'].get('pass'),
+            config['Database'].get('name'))
         self.cur = self.con.cursor()
     
     def closeCon(self):
         self.cur.close()
         self.con.close()
+data = Database()
+data.openCon()
+print(data.accessMove('Tackle'))

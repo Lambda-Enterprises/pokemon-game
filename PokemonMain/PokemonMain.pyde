@@ -1,14 +1,12 @@
-from time import sleep
 from sys import path
+path.append('C:/Program Files/Python37/Lib')
+path.append('C:/Program Files/Python37/Lib/site-packages')
 path.append('./EntityClasses/')
 path.append('./Database/')
-#print(path)
-#import configparser
-#import cx_Oracle
+from time import sleep
 import Database
-#from Pokedex import *
-#import Pokedex
-#import Pokemon
+import Pokedex
+import Pokemon
 #import launcher
 #launcher.create()
 
@@ -16,18 +14,14 @@ import Database
 counter1 = 0
 counter2 = 0
 counter3 = 0
-print("********************")
+
 def setup():
     global plyrbox
     global player, computer
     global x, y, x1, y1, mode, r, textbox, win, lose
     global imageDict
     
-    config = configparser.ConfigParser()
-    config.read('../../../Database.ini')
-    url = config['Database'].get('url')
-    con = cx_Oracle.connect(url)
-    cur = con.cursor()
+    database = Database()
     
     player = Pokemon()
     computer = Pokemon()
