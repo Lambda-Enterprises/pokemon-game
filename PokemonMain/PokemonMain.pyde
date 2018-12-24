@@ -1,6 +1,8 @@
+add_library('BezierSQLib')
 from sys import path
 path.append('C:/Program Files/Python37/Lib')
 path.append('C:/Program Files/Python37/Lib/site-packages')
+path.append('C:/Program Files/Python37/Lib/site-packages/mysql')
 path.append('./EntityClasses/')
 path.append('./Database/')
 from time import sleep

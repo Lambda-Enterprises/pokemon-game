@@ -10,9 +10,22 @@ class Database:
         try:
             self.cur.execute("""SELECT * FROM MOVE
                     WHERE NAME = '""" + name + "'")
-            result = self.cur.fetchall()
+            result = self.cur.fetchone() # change this later
             if result == None:
-                raise Exception('Invalid Type!')
+                raise Exception('Invalid Move!')
+        except DatabaseError as errDB:
+            print(str(errDB))
+        except Exception as err:
+            print(str(err))
+        return result
+    
+    def accessPokemon(self, name):
+        try:
+            self.cur.execute("""SELECT * FROM POKEMON
+                    WHERE NAME = '""" + name + "'")
+            result = self.cur.fetchone() # change this later
+            if result == None:
+                raise Exception('Invalid Pokemon!')
         except DatabaseError as errDB:
             print(str(errDB))
         except Exception as err:
@@ -23,9 +36,9 @@ class Database:
         try:
             self.cur.execute("""SELECT * FROM TYPE
                     WHERE NAME = '""" + name + "'")
-            result = self.cur.fetchall()
+            result = self.cur.fetchone()
             if result == None:
-                raise Exception('Invalid Move!')
+                raise Exception('Invalid Type!')
         except DatabaseError as errDB:
             print(str(errDB))
         except Exception as err:
@@ -45,6 +58,3 @@ class Database:
     def closeCon(self):
         self.cur.close()
         self.con.close()
-data = Database()
-data.openCon()
-print(data.accessMove('Tackle'))

@@ -5,34 +5,27 @@ from Move import *
 from Type import *
 
 class Pokemon: #holds all the stats for each pokemon
-    def __init__(self, name = None):
-        try:
-            with open('Data/Pokemon.json', 'r') as file:
-                pokeDict = json.loads(file.read())
-                file.close()
-            pokemon = pokeDict[name]
-            stats = pokemon['stats']
-            names = pokemon['names']
-            (self.lvl, self.hp, self.atk, self.defn, self.spatk,
-            self.spdefn, self.sp) = tuple(x for x in stats)
-            self.name = name
-            self.type = [Type(x) for x in names[0:2]]
-            self.move = [Move(x) for x in names[2:]]
-        except:
+    def __init__(self, name = None, db = None):
+        self.data = db.accessPokemon(name)
+        if name and self.data:
+            self.id = self.data[0]
+            self.name = self.data[1]
+            self.type1 = self.data[2]
+            self.type2 = self.data[3]
+        elif not self.data:
             print('Invalid Pokemon!')
     
     def setPokemon(self, name):
-        with open('Data/Pokemon.json', 'r') as file:
-            pokeDict = json.loads(file.read())
-            file.close()
-        pokemon = pokeDict[name]
-        stats = pokemon['stats']
-        names = pokemon['names']
-        (self.lvl, self.hp, self.atk, self.defn, self.spatk,
-         self.spdefn, self.sp) = tuple(x for x in stats)
-        self.name = name
-        self.type = [Type(x) for x in names[0:2]]
-        self.move = [Move(x) for x in names[2:]]
+        self.data = db.accessPokemon(name)
+        if name and self.data:
+            id = self.data[0]
+            name = self.data[1]
+            type1 = self.data[2]
+            type2 = self.data[3]
+        elif not name:
+            print('Empty Pokemon Name!')
+        elif not self.data:
+            print('Invalid Pokemon!')
     
     @property
     def getStats(self):
