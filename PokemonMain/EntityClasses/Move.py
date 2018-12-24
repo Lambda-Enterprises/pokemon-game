@@ -1,4 +1,6 @@
-from Database.Database import *
+from sys import path
+path.append("./../Database")
+from Database import *
 from Pokemon import *
 from Type import *
 

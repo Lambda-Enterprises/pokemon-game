@@ -1,8 +1,14 @@
 from time import sleep
-add_library('EntityClasses.Pokedex')
-add_library('EntityClasses.Pokemon')
-#add_library(configparser)
-#from cx_Oracle import *
+from sys import path
+path.append('./EntityClasses/')
+path.append('./Database/')
+#print(path)
+#import configparser
+#import cx_Oracle
+import Database
+#from Pokedex import *
+#import Pokedex
+#import Pokemon
 #import launcher
 #launcher.create()
 
@@ -10,7 +16,7 @@ add_library('EntityClasses.Pokemon')
 counter1 = 0
 counter2 = 0
 counter3 = 0
-
+print("********************")
 def setup():
     global plyrbox
     global player, computer

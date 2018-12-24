@@ -1,6 +1,8 @@
-from Database.Database import *
-from Type import *
+from sys import path
+path.append("./../Database")
+from Database import *
 from Move import *
+from Type import *
 
 class Pokemon: #holds all the stats for each pokemon
     def __init__(self, name = None):
