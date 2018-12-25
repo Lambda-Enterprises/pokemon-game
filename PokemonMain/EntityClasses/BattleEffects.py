@@ -1,5 +1,3 @@
-from sys import path
-path.append("./../Database")
 from Pokemon import *
 
 class BattleEffects:
@@ -17,3 +15,14 @@ class BattleEffects:
     
     def calcStatChange(self, attacker, defender):
         return 0 #to do
+    
+    def statusCondition(self, name):
+        status = {
+            "asleep": 25
+            "burned": 25,
+            "frozen": 25,
+            "paralyzed": 25,
+            "poisoned": 25
+        }
+        return status[name] #to do
+    

@@ -1,14 +1,14 @@
-add_library('BezierSQLib')
 from sys import path
 path.append('C:/Program Files/Python37/Lib')
 path.append('C:/Program Files/Python37/Lib/site-packages')
-path.append('C:/Program Files/Python37/Lib/site-packages/mysql')
-path.append('./EntityClasses/')
-path.append('./Database/')
+path.append('C:/Program Files/Python37/Lib/site-packages/pymysql')
+path.append('./EntityClasses')
+path.append('./Database')
 from time import sleep
 import Database
-import Pokedex
+#import Pokedex
 import Pokemon
+import BattleEffects
 #import launcher
 #launcher.create()
 
@@ -23,7 +23,8 @@ def setup():
     global x, y, x1, y1, mode, r, textbox, win, lose
     global imageDict
     
-    database = Database()
+    db = Database()
+    db.openCon()
     
     player = Pokemon()
     computer = Pokemon()

@@ -3,15 +3,16 @@ path.append("./../Database")
 from Database import *
 from Move import *
 from Type import *
+from Pokedex import *
 
 class Pokemon: #holds all the stats for each pokemon
     def __init__(self, name = None, db = None):
         self.data = db.accessPokemon(name)
-        if name and self.data:
+        if name and self.data and db:
             self.id = self.data[0]
             self.name = self.data[1]
-            self.type1 = self.data[2]
-            self.type2 = self.data[3]
+            self.type1 = Type(self.data[2], db)
+            self.type2 = Type(self.data[3], db)
         elif not self.data:
             print('Invalid Pokemon!')
     

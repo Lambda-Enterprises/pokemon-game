@@ -31,8 +31,3 @@ class Move:
             print('Empty Move Name!')
         elif not self.data:
             print('Invalid Move!')
-data = Database()
-data.openCon()
-move = Move('Blizzard', data)
-print(move.name)
-data.closeCon()

@@ -1,5 +1,5 @@
-import MySQLdb
 import configparser
+import pymysql
 
 class Database:
     def __init__(self):
@@ -32,6 +32,19 @@ class Database:
             print(str(err))
         return result
     
+    def accessPokedex(self, name):
+        try:
+            self.cur.execute("""SELECT * FROM POKEMON
+                    WHERE NAME = '""" + name + "'")
+            result = self.cur.fetchone() # change this later
+            if result == None:
+                raise Exception('Invalid Pokemon!')
+        except DatabaseError as errDB:
+            print(str(errDB))
+        except Exception as err:
+            print(str(err))
+        return result
+    
     def accessType(self, name):
         try:
             self.cur.execute("""SELECT * FROM TYPE
@@ -48,7 +61,7 @@ class Database:
     def openCon(self):
         config = configparser.ConfigParser()
         config.read('../../../Database.ini')
-        self.con = MySQLdb.connect(
+        self.con = pymysql.connect(
             config['Database'].get('host'),
             config['Database'].get('user'),
             config['Database'].get('pass'),
