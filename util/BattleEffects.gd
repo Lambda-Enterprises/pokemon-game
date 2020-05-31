@@ -1,4 +1,3 @@
-extends Node
 extends Pokemon
 
 class_name BattleEffects

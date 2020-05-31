@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Pokemon",
+"class": "BattleEffects",
+"language": "GDScript",
+"path": "res://util/BattleEffects.gd"
+}, {
 "base": "Type",
 "class": "Move",
 "language": "GDScript",
@@ -20,6 +25,7 @@ _global_script_classes=[ {
 "path": "res://util/Type.gd"
 } ]
 _global_script_class_icons={
+"BattleEffects": "",
 "Move": "",
 "Type": ""
 }
@@ -27,7 +33,6 @@ _global_script_class_icons={
 [application]
 
 config/name="pokemon-game"
-run/main_scene="res://Test.tscn"
 config/icon="res://icon.png"
 
 [display]
