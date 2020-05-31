@@ -22,7 +22,11 @@ tracks/0/keys = {
 }
 
 [node name="Area2D" type="Area2D"]
+position = Vector2( 119.09, 68.7532 )
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 visible = false

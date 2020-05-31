@@ -1,4 +1,4 @@
-extends Type
+var Type = load("Type.gd")
 
 class_name Move
 

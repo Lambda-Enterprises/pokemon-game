@@ -9,7 +9,7 @@ func get_types():
 	file.close()
 	
 	type_matchup = JSON.parse(text).result
-	print(type_matchup)
+	#print(type_matchup)
 
 func _ready():
 	get_types()
