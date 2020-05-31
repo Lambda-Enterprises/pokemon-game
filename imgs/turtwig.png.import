@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/pikachu.png-7fb6224f5374b812d2db1e57c2ca43ed.stex"
+path="res://.import/turtwig.png-08029979e623ac7c1881e82aa0b4b818.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://pics/pikachu.png"
-dest_files=[ "res://.import/pikachu.png-7fb6224f5374b812d2db1e57c2ca43ed.stex" ]
+source_file="res://imgs/turtwig.png"
+dest_files=[ "res://.import/turtwig.png-08029979e623ac7c1881e82aa0b4b818.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/cbacks.png-0fa25e2863fc7278ec0bf53290e1828f.stex"
+path="res://.import/piplup.png-a6c2532c4121b6b23c3098f19be1b841.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://imgs/cbacks.png"
-dest_files=[ "res://.import/cbacks.png-0fa25e2863fc7278ec0bf53290e1828f.stex" ]
+source_file="res://imgs/piplup.png"
+dest_files=[ "res://.import/piplup.png-a6c2532c4121b6b23c3098f19be1b841.stex" ]
 
 [params]
 

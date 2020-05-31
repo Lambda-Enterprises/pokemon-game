@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/chimchar.png-bc2a074c7297b76efc78c3ed6a9addc3.stex"
+path="res://.import/pikachu.png-8beb6494cc7cfc5b6619117b93a45048.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://pics/chimchar.png"
-dest_files=[ "res://.import/chimchar.png-bc2a074c7297b76efc78c3ed6a9addc3.stex" ]
+source_file="res://imgs/pikachu.png"
+dest_files=[ "res://.import/pikachu.png-8beb6494cc7cfc5b6619117b93a45048.stex" ]
 
 [params]
 

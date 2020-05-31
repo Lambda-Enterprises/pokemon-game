@@ -32,4 +32,5 @@ _global_script_class_icons={
 
 [application]
 
+config/name="pokemon-game"
 run/main_scene="res://Node.tscn"
