@@ -7,14 +7,14 @@ var superEffective
 var notEffective
 var noEffect
 
-func __init__(self):
-	typeName = None
-	superEffective = None
-	notEffective = None
-	noEffect = None
+func _init():
+	typeName = ""
+	superEffective = []
+	notEffective = []
+	noEffect = []
 
-func setType(self, name = None, superEffective = None,
-			notEffective = None, noEffect = None):
+func setType(name = "", superEffective = [],
+			notEffective = [], noEffect = []):
 	if name:
 		self.name = name
 		self.superEffective = superEffective

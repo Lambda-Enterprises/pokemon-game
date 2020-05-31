@@ -1,18 +1,18 @@
-extends Move
-extends Type
-extends Pokedex
+var Move = load("Move.gd")
+var Type = load("Type.gd")
+var Pokedex = load("Pokedex.gd")
 
 class_name Pokedex #holds all the stats for each pokemon
 
-func __init__(self, name = None):
+func __init__(name = ""):
 	if name:
-		self.id = None
-		self.name = None
-		self.type1 = None
-		self.type2 = None
+		self.id = ""
+		self.name = ""
+		self.type1 = Type.new()
+		self.type2 = Type.new()
 
-func setPokedex(self, id = None, name = None,
-				type1 = None, type2 = None):
+func setPokedex(id = 0, name = "",
+				type1 = Type.new(), type2 = Type.new()):
 	if name:
 		self.id = id
 		self.name = name
