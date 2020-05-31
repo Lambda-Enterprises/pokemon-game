@@ -14,3 +14,4 @@ script = ExtResource( 1 )
 position = Vector2( 120.383, 51.9526 )
 
 [node name="Chimchar" parent="CanvasLayer" instance=ExtResource( 4 )]
+position = Vector2( 1, 73 )
