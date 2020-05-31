@@ -8,7 +8,6 @@
 
 config_version=4
 
-<<<<<<< HEAD
 _global_script_classes=[ {
 "base": "Pokemon",
 "class": "BattleEffects",
@@ -29,26 +28,8 @@ _global_script_class_icons={
 "BattleEffects": "",
 "Move": "",
 "Type": ""
-=======
-_global_script_classes=[  ]
-_global_script_class_icons={
-
->>>>>>> a849bda90066e5c29bdf9439cd3c81acd75fe048
 }
 
 [application]
 
-<<<<<<< HEAD
-config/name="pokemon-game"
-config/icon="res://icon.png"
-
-[display]
-
-window/dpi/allow_hidpi=true
-
-[rendering]
-
-environment/default_environment="res://default_env.tres"
-=======
 run/main_scene="res://Node.tscn"
->>>>>>> a849bda90066e5c29bdf9439cd3c81acd75fe048
