@@ -1,7 +1,11 @@
 extends Area2D
 
-var anime = "neutral"
-var Type = load("Type.gd")
+var Pokemon = load("Pokemon.gd")
+export var anime = "turtwig"
+
 
 func _ready():
-	get_node("AnimationPlayer").play(anime)
+	$AnimationPlayer.play(anime)
+
+func _process(delta):
+	pass
