@@ -1,0 +1,92 @@
+{
+  "Normal": {
+    "supereff": null,
+    "noteff": "Rock,Steel",
+    "noeff": "Ghost"
+  },
+  "Fire": {
+    "supereff": "Grass,Bug,Ice,Steel",
+    "noteff": "Water,Fire,Rock,Dragon",
+    "noeff": null
+  },
+  "Water": {
+    "supereff": "Fire,Ground,Rock",
+    "noteff": "Water,Grass,Dragon",
+    "noeff": null
+  },
+  "Electric": {
+    "supereff": "Water,Flying",
+    "noteff": "Electric,Grass,Dragon",
+    "noeff": "Ground"
+  },
+  "Grass": {
+    "supereff": "Water,Ground,Rock",
+    "noteff": "Fire,Grass,Poison,Flying,Bug,Dragon,Steel",
+    "noeff": null
+  },
+  "Ice": {
+    "supereff": "Grass,Ground,Flying,Dragon",
+    "noteff": "Fire,Water,Ice,Steel",
+    "noeff": null
+  },
+  "Fighting": {
+    "supereff": "Normal,Ice,Rock,Dark,Steel",
+    "noteff": "Poison,Flying,Psychic,Bug,Fairy",
+    "noeff": "Ghost"
+  },
+  "Poison": {
+    "supereff": "Grass,Fairy",
+    "noteff": "Poison,Ground,Rock,Ghost",
+    "noeff": "Steel"
+  },
+  "Ground": {
+    "supereff": "Fire,Electric,Poison,Rock,Steel",
+    "noteff": "Grass,Bug",
+    "noeff": "Flying"
+  },
+  "Flying": {
+    "supereff": "Grass,Fighting,Bug",
+    "noteff": "Electric,Rock,Steel",
+    "noeff": null
+  },
+  "Psychic": {
+    "supereff": "Fighting,Poison",
+    "noteff": "Psychic,Steel",
+    "noeff": "Dark"
+  },
+  "Bug": {
+    "supereff": "Grass,Psychic,Dark",
+    "noteff": "Fire,Fighting,Poison,Flying,Ghost,Steel,Fairy",
+    "noeff": null
+  },
+  "Rock": {
+    "supereff": "Fire,Ice,Flying,Bug",
+    "noteff": "Fighting,Ground,Steel",
+    "noeff": null
+  },
+  "Ghost": {
+    "supereff": "Psychic,Ghost",
+    "noteff": "Dark",
+    "noeff": "Normal"
+  },
+  "Dragon": {
+    "supereff": "Dragon",
+    "noteff": "Steel",
+    "noeff": "Fairy"
+  },
+  "Dark": {
+    "supereff": "Psychic,Ghost",
+    "noteff": "Fighting,Dark,Fairy",
+    "noeff": null
+  },
+  "Steel": {
+    "supereff": "Ice,Rock,Fairy",
+    "noteff": "Fire,Water,Electric,Steel",
+    "noeff": null
+  },
+  "Fairy": {
+    "supereff": "Fighting,Dragon,Dark",
+    "noteff": "Fire,Poison,Steel",
+    "noeff": null
+  }
+}

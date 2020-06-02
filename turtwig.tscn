@@ -1,9 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Turtwig.gd" type="Script" id=1]
 [ext_resource path="res://imgs/turtwig_animation.png" type="Texture" id=2]
 
-[sub_resource type="Animation" id=1]
+[sub_resource type="Animation" id=3]
 resource_name = "turtwig"
 length = 4.65
 loop = true
@@ -21,23 +21,27 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30 ]
 }
 
+[sub_resource type="CircleShape2D" id=2]
+radius = 68.1542
+
 [node name="Area2D" type="Area2D"]
-position = Vector2( 119.09, 68.7532 )
+position = Vector2( 491, 270 )
+gravity = 0.0
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-visible = false
-polygon = PoolVector2Array( -29.5874, 37.9233, -29.5874, 59.1528, -14.9922, 61.143, -8.35796, 49.8649, 0.26651, 51.1917, 0.26651, 61.143, 16.852, 63.7967, 25.4765, 56.4991, 39.4083, 57.1625, 48.6962, 44.5575, 44.7157, 16.0304, 19.5057, 4.75227, 8.22755, -28.4187, -1.72375, -30.409, 16.1886, -37.0432, 28.1302, -52.3019, 23.4862, -59.5995, 2.9202, -58.9361, -1.72375, -52.9653, -11.0116, -57.6093, -25.6069, -66.8971, -32.2411, -62.2532, -32.2411, -52.3019, -24.2801, -41.0237, -18.3093, -35.7164, -41.529, -18.4674, -50.1535, -1.21851, -48.8266, 18.0207, -44.8461, 31.2891 )
-
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 640.092, 259.187 )
 scale = Vector2( 3, 3 )
 texture = ExtResource( 2 )
 vframes = 4
 hframes = 8
+frame = 18
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/turtwig = SubResource( 1 )
+anims/turtwig = SubResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+disabled = true

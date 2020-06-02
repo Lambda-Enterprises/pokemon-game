@@ -1,0 +1,290 @@
+{
+  "Blizzard": {
+    "kind": "Special",
+    "type": "Ice",
+    "power": 120,
+    "accuracy": 70,
+    "pp": 5,
+    "range": "Many Others"
+  },
+  "Body Slam": {
+    "kind": "Physical",
+    "type": "Normal",
+    "power": 85,
+    "accuracy": 100,
+    "pp": 15,
+    "range": "Normal"
+  },
+  "Dig": {
+    "kind": "Physical",
+    "type": "Ground",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 10,
+    "range": "Normal"
+  },
+  "Fire Blast": {
+    "kind": "Special",
+    "type": "Fire",
+    "power": 120,
+    "accuracy": 85,
+    "pp": 5,
+    "range": "Normal"
+  },
+  "Fire Spin": {
+    "kind": "Special",
+    "type": "Fire",
+    "power": 35,
+    "accuracy": 85,
+    "pp": 15,
+    "range": "Normal"
+  },
+  "Flamethrower": {
+    "kind": "Special",
+    "type": "Fire",
+    "power": 95,
+    "accuracy": 100,
+    "pp": 15,
+    "range": "Normal"
+  },
+  "Fly": {
+    "kind": "Physical",
+    "type": "Flying",
+    "power": 90,
+    "accuracy": 95,
+    "pp": 15,
+    "range": "Normal"
+  },
+  "Growth": {
+    "kind": "Status",
+    "type": "Normal",
+    "power": "NULL",
+    "accuracy": "NULL",
+    "pp": 40,
+    "range": "Self"
+  },
+  "Hydro Pump": {
+    "kind": "Special",
+    "type": "Water",
+    "power": 120,
+    "accuracy": 80,
+    "pp": 5,
+    "range": "Normal"
+  },
+  "Hyper Beam": {
+    "kind": "Special",
+    "type": "Normal",
+    "power": 150,
+    "accuracy": 90,
+    "pp": 5,
+    "range": "Normal"
+  },
+  "Leech Life": {
+    "kind": "Physical",
+    "type": "Bug",
+    "power": 20,
+    "accuracy": 100,
+    "pp": 15,
+    "range": "Normal"
+  },
+  "Leech Seed": {
+    "kind": "Status",
+    "type": "Grass",
+    "power": "NULL",
+    "accuracy": 90,
+    "pp": 10,
+    "range": "Normal"
+  },
+  "Mega Drain": {
+    "kind": "Special",
+    "type": "Grass",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 15,
+    "range": "Normal"
+  },
+  "Mirror Move": {
+    "kind": "Status",
+    "type": "Flying",
+    "power": "NULL",
+    "accuracy": "NULL",
+    "pp": 20,
+    "range": "Normal"
+  },
+  "Poison Sting": {
+    "kind": "Physical",
+    "type": "Poison",
+    "power": 15,
+    "accuracy": 100,
+    "pp": 35,
+    "range": "Normal"
+  },
+  "Psychic": {
+    "kind": "Special",
+    "type": "Psychic",
+    "power": 90,
+    "accuracy": 100,
+    "pp": 10,
+    "range": "Normal"
+  },
+  "Quick Attack": {
+    "kind": "Physical",
+    "type": "Normal",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 30,
+    "range": "Normal"
+  },
+  "Razor Leaf": {
+    "kind": "Physical",
+    "type": "Grass",
+    "power": 55,
+    "accuracy": 95,
+    "pp": 25,
+    "range": "Normal"
+  },
+  "Sand-Attack": {
+    "kind": "Status",
+    "type": "Ground",
+    "power": "NULL",
+    "accuracy": 100,
+    "pp": 15,
+    "range": "Normal"
+  },
+  "Seismic Toss": {
+    "kind": "Physical",
+    "type": "Fighting",
+    "power": 85,
+    "accuracy": 100,
+    "pp": 20,
+    "range": "Normal"
+  },
+  "Skull Bash": {
+    "kind": "Physical",
+    "type": "Normal",
+    "power": 100,
+    "accuracy": 100,
+    "pp": 15,
+    "range": "Normal"
+  },
+  "Slash": {
+    "kind": "Physical",
+    "type": "Normal",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 20,
+    "range": "Normal"
+  },
+  "Sleep Powder": {
+    "kind": "Status",
+    "type": "Poison",
+    "power": "NULL",
+    "accuracy": 75,
+    "pp": 35,
+    "range": "Normal"
+  },
+  "Solarbeam": {
+    "kind": "Special",
+    "type": "Grass",
+    "power": 120,
+    "accuracy": 100,
+    "pp": 10,
+    "range": "Normal"
+  },
+  "String Shot": {
+    "kind": "Status",
+    "type": "Bug",
+    "power": "NULL",
+    "accuracy": 95,
+    "pp": 40,
+    "range": "Normal"
+  },
+  "Stun Spore": {
+    "kind": "Status",
+    "type": "Grass",
+    "power": "NULL",
+    "accuracy": 75,
+    "pp": 30,
+    "range": "Normal"
+  },
+  "Submission": {
+    "kind": "Physical",
+    "type": "Fighting",
+    "power": 80,
+    "accuracy": 80,
+    "pp": 25,
+    "range": "Normal"
+  },
+  "Surf": {
+    "kind": "Special",
+    "type": "Water",
+    "power": 95,
+    "accuracy": 100,
+    "pp": 15,
+    "range": "Adjacent"
+  },
+  "Swift": {
+    "kind": "Special",
+    "type": "Normal",
+    "power": 60,
+    "accuracy": "NULL",
+    "pp": 20,
+    "range": "Many Others"
+  },
+  "Swords Dance": {
+    "kind": "Status",
+    "type": "Normal",
+    "power": "NULL",
+    "accuracy": "NULL",
+    "pp": 40,
+    "range": "Self"
+  },
+  "Tackle": {
+    "kind": "Physical",
+    "type": "Normal",
+    "power": 50,
+    "accuracy": 100,
+    "pp": 40,
+    "range": "Normal"
+  },
+  "Tail Whip": {
+    "kind": "Status",
+    "type": "Water",
+    "power": "NULL",
+    "accuracy": 100,
+    "pp": 30,
+    "range": "Normal"
+  },
+  "Toxic": {
+    "kind": "Status",
+    "type": "Poison",
+    "power": "NULL",
+    "accuracy": 100,
+    "pp": 10,
+    "range": "Normal"
+  },
+  "Twineedle": {
+    "kind": "Physical",
+    "type": "Bug",
+    "power": 25,
+    "accuracy": 100,
+    "pp": 20,
+    "range": "Normal"
+  },
+  "Whirlwind": {
+    "kind": "Status",
+    "type": "Normal",
+    "power": "NULL",
+    "accuracy": 100,
+    "pp": 20,
+    "range": "Normal"
+  },
+  "Withdraw": {
+    "kind": "Status",
+    "type": "Water",
+    "power": "NULL",
+    "accuracy": "NULL",
+    "pp": 40,
+    "range": "Self"
+  }
+}

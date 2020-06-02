@@ -32,12 +32,11 @@ visible = false
 polygon = PoolVector2Array( 164.604, 369.996, 176.411, 314.555, 193.351, 292.482, 243.658, 310.962, 264.705, 361.783, 251.872, 418.25, 221.071, 450.591, 152.283, 442.378, 155.364, 399.257 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 217.823, 453.934 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
 vframes = 2
 hframes = 10
-frame = 18
+frame = 17
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/chimchar = SubResource( 1 )
