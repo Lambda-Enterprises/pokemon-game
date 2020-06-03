@@ -17,4 +17,4 @@ _global_script_class_icons={
 
 config/name="pokemon-game"
 run/main_scene="res://Main.tscn"
-config/icon="res://imgs/Mobile - Pokemon TV - Poke Ball/handset_pokeball.png"
+config/icon="res://img/black-pokeball.png"

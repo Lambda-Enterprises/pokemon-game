@@ -1,5 +1,3 @@
-extends "res://DataAccess.gd"
-
 const Move = preload("res://util/Move.gd")
 const Type = preload("res://util/Type.gd")
 const Pokemon = preload("res://util/Pokemon.gd")

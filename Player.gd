@@ -1,11 +1,9 @@
-extends Node
-
-
-const JSONAccess = preload("res://util/JSONAccess.gd")
+extends AnimatedSprite
 
 
 # Declare member variables here. Examples:
-var pokemonColl = []
+# var a = 2
+# var b = "text"
 
 
 # Called when the node enters the scene tree for the first time.

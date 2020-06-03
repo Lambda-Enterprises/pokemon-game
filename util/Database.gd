@@ -1,4 +1,3 @@
-extends "res://DataAccess.gd"
 #extends configparser
 #extends pymysql
 #from sys import path

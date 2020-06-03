@@ -2,10 +2,11 @@
 
 [ext_resource path="res://imgs/battlezone.png" type="Texture" id=1]
 
-[node name="CanvasLayer" type="CanvasLayer"]
-
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="BattleArea" type="TextureRect"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 1 )
 expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
