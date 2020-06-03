@@ -1,6 +1,9 @@
 extends AnimatedSprite
 
 
+const Pokemon = preload("res://util/Pokemon.gd")
+
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"

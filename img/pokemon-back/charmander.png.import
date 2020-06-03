@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/cpubox.png-b8908acb1e446d0d0e083530f80db714.stex"
+path="res://.import/charmander.png-fc98a0f101bb2cf0acd79feb9bfe489c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://img/cpubox.png"
-dest_files=[ "res://.import/cpubox.png-b8908acb1e446d0d0e083530f80db714.stex" ]
+source_file="res://img/pokemon-back/charmander.png"
+dest_files=[ "res://.import/charmander.png-fc98a0f101bb2cf0acd79feb9bfe489c.stex" ]
 
 [params]
 

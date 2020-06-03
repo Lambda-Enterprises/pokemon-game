@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/battlezone.png-48fbcd9b1feab2d5625c06f4d7a39bb4.stex"
+path="res://.import/battlezone.png-6545c6916aa6c08ba4a467675d296591.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://img/battlezone.png"
-dest_files=[ "res://.import/battlezone.png-48fbcd9b1feab2d5625c06f4d7a39bb4.stex" ]
+source_file="res://img/battle-area/battlezone.png"
+dest_files=[ "res://.import/battlezone.png-6545c6916aa6c08ba4a467675d296591.stex" ]
 
 [params]
 

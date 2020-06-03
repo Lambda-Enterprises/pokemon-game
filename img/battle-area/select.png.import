@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/plyrbox.png-605d0e79d776ffa1b946da508dfd7a95.stex"
+path="res://.import/select.png-7715aa03c3f3cec381b8f98d50789d08.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://img/plyrbox.png"
-dest_files=[ "res://.import/plyrbox.png-605d0e79d776ffa1b946da508dfd7a95.stex" ]
+source_file="res://img/battle-area/select.png"
+dest_files=[ "res://.import/select.png-7715aa03c3f3cec381b8f98d50789d08.stex" ]
 
 [params]
 
