@@ -210,6 +210,6 @@ animations = [ {
 [node name="Opponent" type="AnimatedSprite"]
 frames = SubResource( 39 )
 animation = "Charmander"
-frame = 18
+frame = 2
 playing = true
 script = ExtResource( 3 )
