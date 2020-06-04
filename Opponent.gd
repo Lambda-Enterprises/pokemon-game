@@ -1,18 +1,18 @@
 extends AnimatedSprite
 
 
-const JSONAccess = preload("res://util/JSONAccess.gd")
+var JSONAccess = load("res://util/JSONAccess.gd")
 const Pokemon = preload("res://util/Pokemon.gd")
 
 
 # Declare member variables here. Examples:
-export var pokemonName = ""
-var pokemon = JSONAccess.accessPokemon(1)
+var js = JSONAccess.new()
+var pokemon = js.accessPokemon(1)
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	set_animation(pokemon.name)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

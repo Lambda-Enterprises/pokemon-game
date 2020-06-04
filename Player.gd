@@ -1,12 +1,13 @@
 extends AnimatedSprite
 
 
+var JSONAccess = load("res://util/JSONAccess.gd")
 const Pokemon = preload("res://util/Pokemon.gd")
 
 
 # Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+var js = JSONAccess.new()
+var pokemon = js.accessPokemon(1)
 
 
 # Called when the node enters the scene tree for the first time.
