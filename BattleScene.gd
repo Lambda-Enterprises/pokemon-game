@@ -1,7 +1,10 @@
-extends Node
+extends TextureRect
 
 
+# Import necessary *.gd files
+const Pokemon = preload("res://util/Pokemon.gd")
 const JSONAccess = preload("res://util/JSONAccess.gd")
+const BattleEffects = preload("res://util/BattleEffects.gd")
 
 
 # Declare member variables here. Examples:
