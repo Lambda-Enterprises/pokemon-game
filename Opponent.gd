@@ -1,7 +1,6 @@
 extends AnimatedSprite
 
 
-const JSONAccess = preload("res://util/JSONAccess.gd")
 const Pokemon = preload("res://util/Pokemon.gd")
 
 

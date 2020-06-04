@@ -60,6 +60,11 @@ config/name="pokemon-game"
 run/main_scene="res://PokemonSelect.tscn"
 config/icon="res://img/black-pokeball.png"
 
+[autoload]
+
+Global="*res://Global.gd"
+JsonAccess="*res://util/JSONAccess.gd"
+
 [display]
 
 window/stretch/mode="2d"

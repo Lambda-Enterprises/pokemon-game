@@ -3,7 +3,6 @@ extends TextureRect
 
 # Import necessary *.gd files
 const Pokemon = preload("res://util/Pokemon.gd")
-const JSONAccess = preload("res://util/JSONAccess.gd")
 const BattleEffects = preload("res://util/BattleEffects.gd")
 
 
@@ -13,7 +12,10 @@ var pokemonColl = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	$Opponent.pokemon = Global.opponent.pokemon
+	$Opponent.set_animation($Opponent.pokemon.name)
+	$Player.pokemon = Global.player.pokemon
+	$Player.set_animation($Player.pokemon.name)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

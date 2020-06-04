@@ -16,12 +16,16 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_pressed("ui_right") or Input.is_action_pressed("ui_down"):
-		$Pokemon.pokemon = js.accessPokemon(1)
 	if Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_up"):
+		$Pokemon.pokemon = js.accessPokemon(1)
+		$Pokemon.set_animation($Pokemon.pokemon.name)
+		$Name.text = $Pokemon.pokemon.name
+		Global.player.pokemon = $Pokemon.pokemon
+	if Input.is_action_pressed("ui_right") or Input.is_action_pressed("ui_down"):
 		$Pokemon.pokemon = js.accessPokemon(4)
+		$Pokemon.set_animation($Pokemon.pokemon.name)
+		$Name.text = $Pokemon.pokemon.name
+		Global.player.pokemon = $Pokemon.pokemon
 
-
-# Need to implement button here
-func _on_click():
+func _on_Button_pressed():
 	get_tree().change_scene("res://BattleScene.tscn")
