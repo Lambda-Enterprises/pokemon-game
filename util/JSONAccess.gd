@@ -51,8 +51,9 @@ func accessPokemon(id: int = 0):
 	var data2 = self.pokemonData[str(id)]
 	if data1 == null or data2 == null:
 		return pokemon
+	var type2 = null if data1["type2"] == null else accessType(data1["type2"])
 	pokemon.setPokemon(id, data1["name"], accessType(data1["type1"]),
-			accessType(data1["type2"]), data2["lvl"], data2["hp"],
+			type2, data2["lvl"], data2["hp"],
 			data2["attack"], data2["defense"], data2["special_attack"],
 			data2["special_defense"], data2["speed"],
 			accessMove(data2["move1"]), accessMove(data2["move2"]),
