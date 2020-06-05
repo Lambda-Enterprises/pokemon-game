@@ -20,12 +20,11 @@ func _ready():
 		turn[0] = "player"
 	else:
 		turn[0] = "opponent"
-	
-	
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if turn == "player":
+	if turn[0] == "player":
 		pass
 		#print(turn)
 	else:

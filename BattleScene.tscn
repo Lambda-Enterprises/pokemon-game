@@ -16,12 +16,13 @@ __meta__ = {
 }
 
 [node name="Opponent" parent="." instance=ExtResource( 3 )]
-position = Vector2( 763.801, 312.55 )
+position = Vector2( 772.801, 299.55 )
 scale = Vector2( 3, 3 )
-frame = 18
+animation = "Charizard"
+frame = 11
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 227.05, 543.401 )
+position = Vector2( 236.05, 493.401 )
 scale = Vector2( 5, 5 )
 animation = "Bulbasaur"
-frame = 10
+frame = 1
