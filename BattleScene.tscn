@@ -21,11 +21,13 @@ __meta__ = {
 [node name="Opponent" parent="." instance=ExtResource( 3 )]
 position = Vector2( 754.801, 449.55 )
 scale = Vector2( 3, 3 )
+frame = 9
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 237.05, 752.401 )
 scale = Vector2( 5, 5 )
 animation = "Bulbasaur"
+frame = 10
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 512.324, 897.723 )
@@ -67,3 +69,7 @@ margin_bottom = 969.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="pressed" from="Move1" to="." method="_on_Move1_pressed"]
+[connection signal="pressed" from="Move2" to="." method="_on_Move2_pressed"]
+[connection signal="pressed" from="Move3" to="." method="_on_Move3_pressed"]
+[connection signal="pressed" from="Move4" to="." method="_on_Move4_pressed"]
