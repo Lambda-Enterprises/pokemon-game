@@ -140,7 +140,7 @@
     "ability": "Keen eye",
     "move1": "Whirlwind",
     "move2": "Fly",
-    "move3": "Sand-attack",
+    "move3": "Sand-Attack",
     "move4": "Mirror Move"
   }],
   "17": [{
@@ -149,16 +149,16 @@
     "ability": "Keen eye",
     "move1": "Swift",
     "move2": "Fly",
-    "move3": "Sand-attack",
+    "move3": "Sand-Attack",
     "move4": "Toxic"
   }],
   "18": [{
     "id": 1,
     "lvl": 1,
     "ability": "Keen eye",
-    "move1": "Sand-attack",
+    "move1": "Sand-Attack",
     "move2": "Mirror Move",
-    "move3": "Quick attack",
+    "move3": "Quick Attack",
     "move4": "Fly"
   }]
 }
