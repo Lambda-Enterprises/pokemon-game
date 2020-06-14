@@ -1,7 +1,6 @@
 const Move = preload("res://util/Move.gd")
 const Type = preload("res://util/Type.gd")
 const Pokemon = preload("res://util/Pokemon.gd")
-const Pokedex = preload("res://util/Pokedex.gd")
 
 class_name JSONAccess
 
@@ -38,27 +37,29 @@ func accessType(name: String = ""):
 
 func accessMove(name: String = ""):
 	var move = Move.new()
-	var data = self.moveData[name]
-	if data == null:
+	if name == "NULL":
 		return move
+	var data = self.moveData[name]
 	move.setMove(name, data["kind"], accessType(data["type"]),
 			data["power"], data["accuracy"], data["pp"], data["range"])
 	return move
 
-func accessPokemon(id: int = 0):
+func accessPokemon(id: int = 1):
 	var pokemon = Pokemon.new()
+	if id < 1 or id > Global.numOfPokemon:
+		return Pokemon
 	var data1 = self.pokedexData[str(id)]
-	var data2 = self.pokemonData[str(id)]
-	if data1 == null or data2 == null:
-		return pokemon
-	var type2 = null if data1["type2"] == null else accessType(data1["type2"])
+	var data2 = self.pokemonData[str(id)][0]
+	var type2 = null if data1["type2"] == "NULL" else accessType(data1["type2"])
 	pokemon.setPokemon(id, data1["name"], accessType(data1["type1"]),
-			type2, data2["lvl"], data2["hp"],
-			data2["attack"], data2["defense"], data2["special_attack"],
-			data2["special_defense"], data2["speed"],
+			type2, data2["lvl"], data1["hp"],
+			data1["atk"], data1["def"], data1["spatk"],
+			data1["spdef"], data1["speed"],
 			accessMove(data2["move1"]), accessMove(data2["move2"]),
 			accessMove(data2["move3"]), accessMove(data2["move4"]))
 	return pokemon
 
-func accessPokedex(name: String = ""):
-	return self.pokedexData[name]
+func accessPokedex(id: int = 0):
+	if id == 0:
+		return self.pokedexData
+	return self.pokedexData[str(id)]

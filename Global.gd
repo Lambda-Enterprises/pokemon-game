@@ -1,13 +1,12 @@
 extends Node
 
 
-const Player = preload("res://Player.tscn")
-const Opponent = preload("res://Opponent.tscn")
-
-
 # Declare member variables here. Examples:
-var player = Player.instance()
-var opponent = Opponent.instance()
+const numOfPokemon = 18 # Number of Pokemon registered into the game
+var js = JSONAccess.new()
+var player
+var opponent
+var id = 1
 
 
 # Called when the node enters the scene tree for the first time.

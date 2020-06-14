@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://PokemonSelect/PokemonSelect.gd" type="Script" id=1]
+[ext_resource path="res://Opponent.tscn" type="PackedScene" id=2]
+[ext_resource path="res://PokemonSelect/Background.tscn" type="PackedScene" id=21]
+
+[node name="Pokedex" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" parent="." instance=ExtResource( 21 )]
+
+[node name="ScrollBar" type="ScrollContainer" parent="."]
+anchor_top = -0.00178995
+anchor_bottom = -0.00178993
+margin_left = 56.0
+margin_top = 99.432
+margin_right = 1153.0
+margin_bottom = 743.432
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PokemonList" type="VBoxContainer" parent="ScrollBar"]
+custom_constants/separation = 5
+
+[node name="PokeSprite" parent="." instance=ExtResource( 2 )]
+position = Vector2( 762.783, 298.873 )
+frame = 6

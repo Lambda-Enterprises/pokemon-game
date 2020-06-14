@@ -1,0 +1,63 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://img/pokemon-select/Game Boy Advance - Mega Man Battle Network 5 - Netbattle Stages.png" type="Texture" id=1]
+[ext_resource path="res://img/pokemon-select/pokedex-background.png" type="Texture" id=2]
+[ext_resource path="res://img/pokemon-select/pokeball-background.png" type="Texture" id=3]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 254, 253 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 254, 0, 254, 253 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 508, 0, 254, 253 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 0, 253, 254, 253 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 254, 253, 254, 253 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 1 )
+region = Rect2( 508, 253, 254, 253 )
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ) ],
+"loop": true,
+"name": "background4",
+"speed": 5.0
+} ]
+
+[node name="Background" type="AnimatedSprite"]
+position = Vector2( 518.312, 397.752 )
+scale = Vector2( 4.0637, 3.1664 )
+frames = SubResource( 7 )
+animation = "background4"
+frame = 5
+playing = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Pokeball" type="Sprite" parent="."]
+position = Vector2( 63.5014, -32.3203 )
+scale = Vector2( 0.209479, 0.264194 )
+texture = ExtResource( 3 )
+
+[node name="PokedexBackground" type="Sprite" parent="."]
+position = Vector2( -1.31341, 0.501504 )
+scale = Vector2( 0.246083, 0.314108 )
+texture = ExtResource( 2 )

@@ -5,7 +5,6 @@
 const Move = preload("res://util/Move.gd")
 const Type = preload("res://util/Type.gd")
 const Pokemon = preload("res://util/Pokemon.gd")
-const Pokedex = preload("res://util/Pokedex.gd")
 const BattleEffects = preload("res://util/BattleEffects.gd")
 
 class_name Database
@@ -60,25 +59,6 @@ func accessPokemon(name):
 #	except Exception as err:
 #		print(str(err))
 	return pokemon
-
-func accessPokedex(name):
-	var pokedex = Pokedex.new()
-#	try:
-#		self.cur.execute("""SELECT * FROM POKEMON
-#						WHERE NAME = '%s'""" % name)
-#		result = self.cur.fetchone() # change this later
-#		if result:
-#			pokedex = result[0]
-#			pokedex.name = result[1]
-#			pokedex.type1 = accessType(result[2])
-#			pokedex.type2 = accessType(result[3])
-#		else:
-#			raise Exception('Invalid Pokemon!')
-#	except DatabaseError as errDB:
-#		print(str(errDB))
-#	except Exception as err:
-#		print(str(err))
-	return pokedex
 
 func accessType(name):
 	var type = Type.new()

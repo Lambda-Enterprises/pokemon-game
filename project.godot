@@ -30,11 +30,6 @@ _global_script_classes=[ {
 "path": "res://util/Move.gd"
 }, {
 "base": "Reference",
-"class": "Pokedex",
-"language": "GDScript",
-"path": "res://util/Pokedex.gd"
-}, {
-"base": "Reference",
 "class": "Pokemon",
 "language": "GDScript",
 "path": "res://util/Pokemon.gd"
@@ -49,7 +44,6 @@ _global_script_class_icons={
 "Database": "",
 "JSONAccess": "",
 "Move": "",
-"Pokedex": "",
 "Pokemon": "",
 "Type": ""
 }
@@ -57,7 +51,6 @@ _global_script_class_icons={
 [application]
 
 config/name="pokemon-game"
-run/main_scene="res://PokemonSelect.tscn"
 config/icon="res://img/black-pokeball.png"
 
 [autoload]
@@ -67,5 +60,6 @@ JsonAccess="*res://util/JSONAccess.gd"
 
 [display]
 
+window/size/height=800
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
