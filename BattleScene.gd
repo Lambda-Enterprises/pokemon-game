@@ -32,10 +32,14 @@ func _process(delta):
 		
 				
 	if turn[0] == "opponent" and turn[1] != 2:
-		BattleEffects.baseDamage(Global.opponent, Global.player, Global.opponent.moves[randi() % 3])
+		var move_num = randi()%3
+		BattleEffects.baseDamage(Global.opponent, Global.player, Global.opponent.moves[move_num])
+		if Global.player.hp <= 0:
+			get_tree().change_scene("res://End.tscn")
+		print(Global.opponent.moves[move_num].name)
 		turn[1] += 1
 		turn[0] = "player"
-		#print(turn)
+		
 	if turn[1] == 2:
 		turn[1] = 0
 		print("player hp:" + str(Global.player.hp))
@@ -45,13 +49,20 @@ func _process(delta):
 func _on_Move1_pressed():
 	if turn[0] == "player" and turn[1] != 2:
 		BattleEffects.baseDamage(Global.player, Global.opponent, Global.player.moves[0])
+		if Global.opponent.hp <= 0:
+			Global.win = true
+			get_tree().change_scene("res://End.tscn")
+		print(Global.player.moves[0].name)
 		turn[1] += 1
 		turn[0] = "opponent"
-
 
 func _on_Move2_pressed():
 	if turn[0] == "player" and turn[1] != 2:
 		BattleEffects.baseDamage(Global.player, Global.opponent, Global.player.moves[1])
+		if Global.opponent.hp <= 0:
+			Global.win = true
+			get_tree().change_scene("res://End.tscn")
+		print(Global.player.moves[1].name)
 		turn[1] += 1
 		turn[0] = "opponent"
 
@@ -60,6 +71,10 @@ func _on_Move2_pressed():
 func _on_Move3_pressed():
 	if turn[0] == "player" and turn[1] != 2:
 		BattleEffects.baseDamage(Global.player, Global.opponent, Global.player.moves[2])
+		if Global.opponent.hp <= 0:
+			Global.win = true
+			get_tree().change_scene("res://End.tscn")
+		print(Global.player.moves[2].name)
 		turn[1] += 1
 		turn[0] = "opponent"
 
@@ -67,5 +82,9 @@ func _on_Move3_pressed():
 func _on_Move4_pressed():
 	if turn[0] == "player" and turn[1] != 2:
 		BattleEffects.baseDamage(Global.player, Global.opponent, Global.player.moves[3])
+		if Global.opponent.hp <= 0:
+			Global.win = true
+			get_tree().change_scene("res://End.tscn")
+		print(Global.player.moves[3].name)
 		turn[1] += 1
 		turn[0] = "opponent"
