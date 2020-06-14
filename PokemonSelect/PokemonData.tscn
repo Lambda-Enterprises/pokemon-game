@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://PokemonSelect/Background.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Opponent.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://PokemonSelect/PokemonData.gd" type="Script" id=4]
 [ext_resource path="res://img/pokemon-select/PokemonTypes.png" type="Texture" id=5]
 [ext_resource path="res://img/pokemon-select/oc_profile___hexagon_stat_graph_by_kristaldawn07_d6pkr0i-fullview.png" type="Texture" id=6]
+[ext_resource path="res://PokemonSelect/StatHex.gd" type="Script" id=7]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -113,18 +114,18 @@ animations = [ {
 [node name="PokemonData" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_bottom = 198.0
+margin_bottom = 6.10352e-05
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Background" parent="." instance=ExtResource( 1 )]
-frame = 4
+frame = 1
 
 [node name="PokeSprite" parent="." instance=ExtResource( 2 )]
 position = Vector2( 767.783, 285.515 )
-frame = 6
+frame = 4
 
 [node name="Button" type="Button" parent="."]
 margin_left = 876.987
@@ -186,4 +187,5 @@ texture = ExtResource( 6 )
 position = Vector2( -700.497, -635.115 )
 scale = Vector2( 2.46657, 2.61256 )
 color = Color( 0.403922, 1, 0.678431, 1 )
+script = ExtResource( 7 )
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

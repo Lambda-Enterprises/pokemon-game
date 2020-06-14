@@ -13,6 +13,7 @@ __meta__ = {
 }
 
 [node name="Background" parent="." instance=ExtResource( 21 )]
+frame = 2
 
 [node name="ScrollBar" type="ScrollContainer" parent="."]
 anchor_top = -0.00178995
@@ -30,4 +31,15 @@ custom_constants/separation = 5
 
 [node name="PokeSprite" parent="." instance=ExtResource( 2 )]
 position = Vector2( 762.783, 298.873 )
-frame = 6
+
+[node name="Button" type="Button" parent="."]
+margin_left = 790.0
+margin_top = 654.0
+margin_right = 841.0
+margin_bottom = 674.0
+rect_scale = Vector2( 3, 3 )
+text = "Select"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
