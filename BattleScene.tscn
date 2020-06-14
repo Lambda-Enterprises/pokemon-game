@@ -26,9 +26,44 @@ scale = Vector2( 3, 3 )
 position = Vector2( 237.05, 752.401 )
 scale = Vector2( 5, 5 )
 animation = "Bulbasaur"
-frame = 8
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 512.324, 897.723 )
 scale = Vector2( 4.04627, 4.42755 )
 texture = ExtResource( 5 )
+
+[node name="Move1" type="Button" parent="."]
+margin_left = 92.5682
+margin_top = 825.415
+margin_right = 362.568
+margin_bottom = 893.415
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Move2" type="Button" parent="."]
+margin_left = 462.568
+margin_top = 826.415
+margin_right = 748.568
+margin_bottom = 892.415
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Move3" type="Button" parent="."]
+margin_left = 91.0
+margin_top = 905.0
+margin_right = 363.0
+margin_bottom = 972.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Move4" type="Button" parent="."]
+margin_left = 460.0
+margin_top = 905.0
+margin_right = 749.0
+margin_bottom = 969.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
