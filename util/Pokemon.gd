@@ -37,13 +37,13 @@ func _init():
 	]
 
 func get_moves():
-	return self.moves
+	return moves
 
-func set_moves(moves: Array = []):
-	if len(moves) == 4:
-		self.moves = moves
+func set_moves(m: Array = []):
+	if len(m) == 4:
+		moves = m
 	elif moves.empty():
-		self.moves = [Move.new(), Move.new(), Move.new(), Move.new()]
+		moves = [Move.new(), Move.new(), Move.new(), Move.new()]
 
 func setPokemon(id: int = 0, name: String = "", type1: Type = Type.new(), 
 		type2: Type = Type.new(), lvl: int = 1, hp: int = 1, attack: int = 1,
@@ -56,12 +56,12 @@ func setPokemon(id: int = 0, name: String = "", type1: Type = Type.new(),
 		self.type1 = type1
 		self.type2 = type2
 		self.lvl = lvl
-		self.hp = hp
-		self.attack = attack
-		self.defense = defense
-		self.specialAttack = specialAttack
-		self.specialDefense = specialDefense
-		self.speed = speed
+		self.hp = int(((2*hp*lvl)/100) + lvl + 10)
+		self.attack = int(((2*attack*lvl)/100) + 5)
+		self.defense = int(((2*defense*lvl)/100) + 5)
+		self.specialAttack = int(((2*specialAttack*lvl)/100) + 5)
+		self.specialDefense = int(((2*specialDefense*lvl)/100) + 5)
+		self.speed = int(((2*speed*lvl)/100) + 5)
 		self.moves = [
 			move1,
 			move2,
