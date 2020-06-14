@@ -1,7 +1,6 @@
 extends Control
 
 
-const Pokemon = preload("res://util/Pokemon.gd")
 #need the button scene
 const SelectButton = preload("res://PokemonSelect/SelectButton.tscn")
 

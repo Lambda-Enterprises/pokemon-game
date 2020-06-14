@@ -1,8 +1,11 @@
-const Pokemon = preload("res://util/Pokemon.gd")
+var Pokemon = load("res://util/Pokemon.gd")
 
 class_name BattleEffects
 
-static func baseDamage(attacker: Pokemon, defender: Pokemon):
+static func baseDamage(attacker, defender):
+	if !(attacker is Pokemon) or !(defender is Pokemon):
+		print("Invalid datatype for attacker and/or defender!")
+		return null
 	var mod = 1 # factor that indicates more damage
 	for defender in defender.type.superEffective:
 		mod = mod*2
@@ -14,10 +17,16 @@ static func baseDamage(attacker: Pokemon, defender: Pokemon):
 	(attacker.attack/defender.defense))/defender.level + 2)*mod
 	return (dmg)
 
-static func calcStatChange(attacker: Pokemon, defender: Pokemon):
+static func calcStatChange(attacker, defender):
+	if !(attacker is Pokemon) or !(defender is Pokemon):
+		print("Invalid datatype for attacker and/or defender!")
+		return null
 	return 0 # to do
 
-static func burned(pkmn: Pokemon): #incomplete
+static func burned(pkmn): #incomplete
+	if !(pkmn is Pokemon):
+		print("Invalid datatype for pkmn!")
+		return null
 	var original_atk = pkmn.atk
 	var burn_atk = pkmn.atk/2
 	if pkmn.status == "burned":
@@ -26,7 +35,10 @@ static func burned(pkmn: Pokemon): #incomplete
 	else:
 		pkmn.atk = original_atk
 
-static func paralysis(pkmn: Pokemon): #incomplete
+static func paralysis(pkmn): #incomplete
+	if !(pkmn is Pokemon):
+		print("Invalid datatype for pkmn!")
+		return null
 	randomize()
 	var orignal_spe = pkmn.spe
 	var para_spe = pkmn.spe / 2
@@ -37,7 +49,10 @@ static func paralysis(pkmn: Pokemon): #incomplete
 	else:
 		pkmn.spe = orignal_spe
 
-static func confusion(pkmn: Pokemon): #incomplete
+static func confusion(pkmn): #incomplete
+	if !(pkmn is Pokemon):
+		print("Invalid datatype for pkmn!")
+		return null
 	randomize()
 	var hit = randi()%1
 	var snapout = randi()%2
@@ -48,14 +63,20 @@ static func confusion(pkmn: Pokemon): #incomplete
 		#hits themselves
 		baseDamage(pkmn, pkmn)
 
-static func poisoned(pkmn: Pokemon): #incomplete
+static func poisoned(pkmn): #incomplete
+	if !(pkmn is Pokemon):
+		print("Invalid datatype for pkmn!")
+		return null
 	pkmn.hp -= int(pkmn.hp/16)
 
-static func badly_poisoned(pkmn: Pokemon): #incomplete
+static func badly_poisoned(pkmn): #incomplete
+	if !(pkmn is Pokemon):
+		print("Invalid datatype for pkmn!")
+		return null
 	var dmg_ratio = 1
 	pkmn.hp -= int((pkmn.hp*dmg_ratio)/16)
 
-static func statusCondition(name: Pokemon):
+static func statusCondition(name: String):
 	var status = {
 		"asleep": 25,
 		"burned": 25,

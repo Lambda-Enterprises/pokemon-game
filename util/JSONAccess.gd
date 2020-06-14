@@ -1,6 +1,9 @@
+extends Node
+
+
 const Move = preload("res://util/Move.gd")
 const Type = preload("res://util/Type.gd")
-const Pokemon = preload("res://util/Pokemon.gd")
+var Pokemon = load("res://util/Pokemon.gd")
 
 class_name JSONAccess
 
@@ -24,7 +27,7 @@ func _init():
 	self.pokedexData = parse_json(file.get_as_text()) as Dictionary
 	file.close()
 
-func accessType(name: String = ""):
+func accessType(name: String = "") -> Type:
 	var type = Type.new()
 	var data = self.typeData[name]
 	if data == null:
@@ -35,7 +38,7 @@ func accessType(name: String = ""):
 	type.setType(name, supereff, noteff, noeff)
 	return type
 
-func accessMove(name: String = ""):
+func accessMove(name: String = "") -> Move:
 	var move = Move.new()
 	if name == "NULL":
 		return move
@@ -59,7 +62,7 @@ func accessPokemon(id: int = 1):
 			accessMove(data2["move3"]), accessMove(data2["move4"]))
 	return pokemon
 
-func accessPokedex(id: int = 0):
+func accessPokedex(id: int = 0) -> JSONParseResult:
 	if id == 0:
 		return self.pokedexData
 	return self.pokedexData[str(id)]

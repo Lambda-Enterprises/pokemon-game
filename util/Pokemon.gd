@@ -15,10 +15,7 @@ var defense: int
 var specialAttack: int
 var specialDefense: int
 var speed: int
-var move1: Move
-var move2: Move
-var move3: Move
-var move4: Move
+var moves: Array setget set_moves, get_moves
 
 func _init():
 	self.id = 0
@@ -32,10 +29,21 @@ func _init():
 	self.specialAttack = 1
 	self.specialDefense = 1
 	self.speed = 1
-	self.move1 = Move.new()
-	self.move2 = Move.new()
-	self.move3 = Move.new()
-	self.move4 = Move.new()
+	self.moves = [
+		Move.new(),
+		Move.new(),
+		Move.new(),
+		Move.new()
+	]
+
+func get_moves():
+	return self.moves
+
+func set_moves(moves: Array = []):
+	if len(moves) == 4:
+		self.moves = moves
+	elif moves.empty():
+		self.moves = [Move.new(), Move.new(), Move.new(), Move.new()]
 
 func setPokemon(id: int = 0, name: String = "", type1: Type = Type.new(), 
 		type2: Type = Type.new(), lvl: int = 1, hp: int = 1, attack: int = 1,
@@ -54,10 +62,12 @@ func setPokemon(id: int = 0, name: String = "", type1: Type = Type.new(),
 		self.specialAttack = specialAttack
 		self.specialDefense = specialDefense
 		self.speed = speed
-		self.move1 = move1
-		self.move2 = move2
-		self.move3 = move3
-		self.move4 = move4
+		self.moves = [
+			move1,
+			move2,
+			move3,
+			move4
+		]
 	else:
 		print('Empty Pokemon Name!')
 
