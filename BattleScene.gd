@@ -3,16 +3,9 @@ extends TextureRect
 
 # Import necessary *.gd files
 const BattleEffects = preload("res://util/BattleEffects.gd")
-
-#export (NodePath) var Move1
-#export (NodePath) var Move2
-#export (NodePath) var Move3
-#export (NodePath) var Move4
-
-
-
-
 onready var move_buttons = [$Move1, $Move2, $Move3, $Move4]
+
+
 # Declare member variables here. Examples:
 var turn = ["player", 0]
 
