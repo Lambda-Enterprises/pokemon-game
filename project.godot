@@ -51,7 +51,7 @@ _global_script_class_icons={
 [application]
 
 config/name="pokemon-game"
-run/main_scene="res://Main.tscn"
+run/main_scene="res://PokemonSelect/PokemonSelect.tscn"
 config/icon="res://img/black-pokeball.png"
 
 [autoload]
