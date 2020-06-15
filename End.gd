@@ -19,4 +19,5 @@ func _ready():
 
 func _on_Button_pressed():
 	Global.id = 1
+	Global.win = false
 	get_tree().change_scene("res://PokemonSelect/PokemonSelect.tscn")
