@@ -8,6 +8,9 @@ onready var move_buttons = [$Move1, $Move2, $Move3, $Move4]
 # Declare member variables here. Examples:
 var turn = ["player", 0]
 
+var playertotal = Global.player.hp
+var opponenttotal = Global.opponent.hp
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,13 +18,19 @@ func _ready():
 #		move_buttons[i].connect("pressed", self, "selected")
 	for i in range(len(move_buttons)):
 		move_buttons[i].text = Global.player.moves[i].name
-		
+	$PlayerBox/PlayerLvl.text = str(Global.player.lvl)
+	$PlayerBox/PlayerName.text = Global.player.name
+	$OpponentBox/OpponentLvl.text = str(Global.opponent.lvl)
+	$OpponentBox/OpponentName.text = Global.opponent.name
+	
 	$Opponent.set_animation(Global.opponent.name)
 	$Player.set_animation(Global.player.name)
 	if Global.player.speed >= Global.opponent.speed:
 		turn[0] = "player"
 	else:
 		turn[0] = "opponent"
+	print("player hp:" + str(Global.player.hp))
+	print("opponent hp:" + str(Global.opponent.hp))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -34,6 +43,7 @@ func _process(delta):
 		if Global.player.hp <= 0:
 			get_tree().change_scene("res://End.tscn")
 		print(Global.opponent.moves[move_num].name)
+		$PlayerHealthBar.value = (float(100/playertotal*Global.player.hp))
 		turn[1] += 1
 		turn[0] = "player"
 		
@@ -50,6 +60,7 @@ func _on_Move1_pressed():
 			Global.win = true
 			get_tree().change_scene("res://End.tscn")
 		print(Global.player.moves[0].name)
+		$OpponentHealthBar.value = (float(100/opponenttotal*Global.opponent.hp))
 		turn[1] += 1
 		turn[0] = "opponent"
 
@@ -60,6 +71,7 @@ func _on_Move2_pressed():
 			Global.win = true
 			get_tree().change_scene("res://End.tscn")
 		print(Global.player.moves[1].name)
+		$OpponentHealthBar.value = (float(100/opponenttotal*Global.opponent.hp))
 		turn[1] += 1
 		turn[0] = "opponent"
 
@@ -71,6 +83,7 @@ func _on_Move3_pressed():
 			Global.win = true
 			get_tree().change_scene("res://End.tscn")
 		print(Global.player.moves[2].name)
+		$OpponentHealthBar.value = (float(100/opponenttotal*Global.opponent.hp))
 		turn[1] += 1
 		turn[0] = "opponent"
 
@@ -82,5 +95,6 @@ func _on_Move4_pressed():
 			Global.win = true
 			get_tree().change_scene("res://End.tscn")
 		print(Global.player.moves[3].name)
+		$OpponentHealthBar.value = (float(100/opponenttotal*Global.opponent.hp))
 		turn[1] += 1
 		turn[0] = "opponent"

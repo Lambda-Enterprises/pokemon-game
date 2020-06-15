@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://img/battle-area/battlezone.png" type="Texture" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
@@ -7,6 +7,9 @@
 [ext_resource path="res://img/battle-area/textbox.png" type="Texture" id=5]
 [ext_resource path="res://img/battle-area/player-box.png" type="Texture" id=6]
 [ext_resource path="res://img/battle-area/opponent-box.png" type="Texture" id=7]
+[ext_resource path="res://img/battle-area/backgroundhealth2.png" type="Texture" id=8]
+[ext_resource path="res://img/battle-area/health.png" type="Texture" id=9]
+[ext_resource path="res://img/battle-area/backgroundhealth.png" type="Texture" id=10]
 
 [sub_resource type="DynamicFontData" id=1]
 font_path = "res://fonts/Xolonium-Regular.ttf"
@@ -37,13 +40,13 @@ __meta__ = {
 [node name="Opponent" parent="." instance=ExtResource( 3 )]
 position = Vector2( 754.801, 449.55 )
 scale = Vector2( 3, 3 )
-frame = 8
+frame = 1
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 237.05, 752.401 )
 scale = Vector2( 5, 5 )
 animation = "Bulbasaur"
-frame = 4
+frame = 2
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 512.324, 897.723 )
@@ -91,10 +94,10 @@ __meta__ = {
 }
 
 [node name="PlayerBox" type="TextureRect" parent="."]
-margin_left = 623.0
-margin_top = 614.0
-margin_right = 753.0
-margin_bottom = 664.0
+margin_left = 634.664
+margin_top = 611.667
+margin_right = 764.664
+margin_bottom = 661.667
 rect_scale = Vector2( 3, 3 )
 texture = ExtResource( 6 )
 __meta__ = {
@@ -116,10 +119,10 @@ margin_bottom = 24.0
 rect_pivot_offset = Vector2( -161.667, -142.01 )
 
 [node name="OpponentBox" type="TextureRect" parent="."]
-margin_left = 57.0
-margin_top = 243.0
-margin_right = 179.0
-margin_bottom = 283.0
+margin_left = 5.6806
+margin_top = 240.667
+margin_right = 127.681
+margin_bottom = 280.667
 rect_scale = Vector2( 3, 3 )
 texture = ExtResource( 7 )
 __meta__ = {
@@ -141,6 +144,32 @@ margin_top = 7.66667
 margin_right = 103.333
 margin_bottom = 21.6667
 rect_pivot_offset = Vector2( -161.667, -142.01 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerHealthBar" type="TextureProgress" parent="."]
+margin_left = 853.0
+margin_top = 690.0
+margin_right = 996.0
+margin_bottom = 705.0
+value = 100.0
+texture_under = ExtResource( 8 )
+texture_over = ExtResource( 10 )
+texture_progress = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OpponentHealthBar" type="TextureProgress" parent="."]
+margin_left = 156.0
+margin_top = 313.0
+margin_right = 299.0
+margin_bottom = 328.0
+value = 100.0
+texture_under = ExtResource( 8 )
+texture_over = ExtResource( 10 )
+texture_progress = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
