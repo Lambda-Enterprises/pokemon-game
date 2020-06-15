@@ -28,9 +28,6 @@ func _ready():
 # warning-ignore:unused_argument
 func _process(delta):
 	randomize()
-	
-		
-				
 	if turn[0] == "opponent" and turn[1] != 2:
 		var move_num = randi()%3
 		BattleEffects.baseDamage(Global.opponent, Global.player, Global.opponent.moves[move_num])
@@ -65,7 +62,6 @@ func _on_Move2_pressed():
 		print(Global.player.moves[1].name)
 		turn[1] += 1
 		turn[0] = "opponent"
-
 
 
 func _on_Move3_pressed():
