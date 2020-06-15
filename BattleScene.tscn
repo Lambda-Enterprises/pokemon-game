@@ -40,13 +40,13 @@ __meta__ = {
 [node name="Opponent" parent="." instance=ExtResource( 3 )]
 position = Vector2( 754.801, 449.55 )
 scale = Vector2( 3, 3 )
-frame = 1
+frame = 2
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 237.05, 752.401 )
 scale = Vector2( 5, 5 )
 animation = "Bulbasaur"
-frame = 2
+frame = 7
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 512.324, 897.723 )
@@ -65,9 +65,9 @@ __meta__ = {
 
 [node name="Move2" type="Button" parent="."]
 margin_left = 462.568
-margin_top = 826.415
+margin_top = 825.415
 margin_right = 762.568
-margin_bottom = 891.415
+margin_bottom = 890.415
 custom_fonts/font = SubResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -105,18 +105,54 @@ __meta__ = {
 }
 
 [node name="PlayerName" type="Label" parent="PlayerBox"]
-margin_left = 20.0
-margin_top = 9.66667
-margin_right = 90.0
-margin_bottom = 23.6667
-rect_pivot_offset = Vector2( -161.667, -142.01 )
+margin_left = 18.3333
+margin_top = 8.33334
+margin_right = 116.333
+margin_bottom = 33.3333
+rect_scale = Vector2( 0.75, 0.75 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="PlayerLvl" type="Label" parent="PlayerBox"]
-margin_left = 106.0
-margin_top = 10.0
-margin_right = 123.0
-margin_bottom = 24.0
-rect_pivot_offset = Vector2( -161.667, -142.01 )
+margin_left = 106.667
+margin_top = 9.0
+margin_right = 133.667
+margin_bottom = 32.0
+rect_scale = Vector2( 0.75, 0.75 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerHP" type="Label" parent="PlayerBox"]
+margin_left = 65.0001
+margin_top = 33.0
+margin_right = 100.0
+margin_bottom = 47.0
+rect_scale = Vector2( 0.65, 0.65 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayerMaxHP" type="Label" parent="PlayerBox"]
+margin_left = 97.3334
+margin_top = 33.0
+margin_right = 132.333
+margin_bottom = 47.0
+rect_scale = Vector2( 0.65, 0.65 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="OpponentBox" type="TextureRect" parent="."]
 margin_left = 5.6806
@@ -130,20 +166,25 @@ __meta__ = {
 }
 
 [node name="OpponentName" type="Label" parent="OpponentBox"]
-margin_left = 3.33334
-margin_top = 7.0
-margin_right = 68.3333
-margin_bottom = 21.0
+margin_left = 1.33333
+margin_top = 6.66667
+margin_right = 90.3333
+margin_bottom = 28.6667
+rect_scale = Vector2( 0.75, 0.75 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="OpponentLvl" type="Label" parent="OpponentBox"]
-margin_left = 83.3333
-margin_top = 7.66667
-margin_right = 103.333
-margin_bottom = 21.6667
-rect_pivot_offset = Vector2( -161.667, -142.01 )
+margin_left = 84.0
+margin_top = 8.66667
+margin_right = 105.0
+margin_bottom = 26.6667
+rect_scale = Vector2( 0.75, 0.75 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }

@@ -20,6 +20,8 @@ func _ready():
 		move_buttons[i].text = Global.player.moves[i].name
 	$PlayerBox/PlayerLvl.text = str(Global.player.lvl)
 	$PlayerBox/PlayerName.text = Global.player.name
+	$PlayerBox/PlayerMaxHP.text = str(Global.player.hp)
+	$PlayerBox/PlayerHP.text = str(Global.player.hp)
 	$OpponentBox/OpponentLvl.text = str(Global.opponent.lvl)
 	$OpponentBox/OpponentName.text = Global.opponent.name
 	
@@ -29,8 +31,8 @@ func _ready():
 		turn[0] = "player"
 	else:
 		turn[0] = "opponent"
-	print("player hp:" + str(Global.player.hp))
-	print("opponent hp:" + str(Global.opponent.hp))
+	print("Player HP:" + str(Global.player.hp))
+	print("Opponent HP:" + str(Global.opponent.hp))
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -44,13 +46,13 @@ func _process(delta):
 			get_tree().change_scene("res://End.tscn")
 		print(Global.opponent.moves[move_num].name)
 		$PlayerHealthBar.value = (float(100/playertotal*Global.player.hp))
+		$PlayerBox/PlayerHP.text = str(Global.player.hp)
 		turn[1] += 1
 		turn[0] = "player"
-		
 	if turn[1] == 2:
 		turn[1] = 0
-		print("player hp:" + str(Global.player.hp))
-		print("opponent hp:" + str(Global.opponent.hp))
+		print("Player HP:" + str(Global.player.hp))
+		print("Opponent HP:" + str(Global.opponent.hp))
 
 
 func _on_Move1_pressed():
@@ -70,7 +72,7 @@ func _on_Move2_pressed():
 		if Global.opponent.hp <= 0:
 			Global.win = true
 			get_tree().change_scene("res://End.tscn")
-		print(Global.player.moves[1].name)
+		print(Global.player.name + " used " + Global.player.moves[1].name)
 		$OpponentHealthBar.value = (float(100/opponenttotal*Global.opponent.hp))
 		turn[1] += 1
 		turn[0] = "opponent"
@@ -82,7 +84,7 @@ func _on_Move3_pressed():
 		if Global.opponent.hp <= 0:
 			Global.win = true
 			get_tree().change_scene("res://End.tscn")
-		print(Global.player.moves[2].name)
+		print(Global.opponent.name + " used " + Global.player.moves[2].name)
 		$OpponentHealthBar.value = (float(100/opponenttotal*Global.opponent.hp))
 		turn[1] += 1
 		turn[0] = "opponent"
